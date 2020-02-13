@@ -9,7 +9,7 @@ class App extends Component {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Dashboard}></Route>
+          <Route path='/' component={Dashboard}></Route>
         </Switch>
       </BrowserRouter>
     );
