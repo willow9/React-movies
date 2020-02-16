@@ -3,7 +3,9 @@ import Users from '../components/Users';
 
 class Dashboard extends Component {
   render() {
-    return <Users />;
+    return <div className='row'>
+     <Users />
+    </div>
   }
 }
 export default Dashboard;

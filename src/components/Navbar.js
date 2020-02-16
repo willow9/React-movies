@@ -22,7 +22,7 @@ const Navbar = () => {
             <a>LogOut</a>
           </li>
           <li>
-            <i class='material-icons'>close</i>
+            <i className='material-icons'>close</i>
           </li>
         </ul>
       </div>
