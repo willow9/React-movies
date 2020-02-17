@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Users from '../components/Users';
+import Users from '../components/UserList';
 
 class Dashboard extends Component {
   render() {

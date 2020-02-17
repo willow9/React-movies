@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import UserProfile from "./pages/User";
 import Dashboard from './pages/Dashboard';
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path='/' component={Dashboard}></Route>
+          <Route exact path='/' component={Dashboard}></Route>
+          <Route exact path='/users/:id' component={UserProfile} />
         </Switch>
       </BrowserRouter>
     );
