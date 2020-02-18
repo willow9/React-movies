@@ -8,10 +8,9 @@ const User = props => {
   let user = props.users.find(el => {
     return el.id.toString() === id;
   });
-  
+
   return (
     <div>
-      {user.lastName}
       <div className='row'>
         <UserProfile user={user}></UserProfile>
         <UserMovies />

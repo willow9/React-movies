@@ -12,11 +12,15 @@ code {
 
 nav {
   background-color: #927b7c;
+  margin: 0 5px 0 5px;
+  width: unset;
 }
 .names {
   background-color: aqua;
 }
 .collection .collection-item {
- 
-   border-bottom: unset;
+  border-bottom: unset;
+}
+.row {
+  margin: 0 5px 20px 5px;
 }
