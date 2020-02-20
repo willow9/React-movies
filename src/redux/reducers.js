@@ -29,6 +29,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         movies: action.payload.Search
       };
+      
     default:
       return state;
   }

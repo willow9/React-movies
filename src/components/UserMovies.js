@@ -1,34 +1,31 @@
-import React, { useEffect, Component } from 'react';
+import React, { useEffect } from 'react';
 import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies } from '../redux';
 
-const UserMovies = props => {
-
-  // useEffect(() => {
-  //   props.fetchMovies();
-  // }, []);
-
-  console.log(props);
+const UserMovies = ({ fetchMovies, movies }) => {
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
 
   const onClick = e => {
-    props.fetchMovies();
+    fetchMovies();
   };
 
   return (
     <div className='col s12 m8 l8  grey'>
       <h3 className='center'>Favorite Movies</h3>
       <div className='row'>
-        {props.movies.map(el => {
+        {movies.map((el, index) => {
           return (
-            <div className='col s12 m6 l3' key={el.id}>
+            <div className='col s12 m6 l3' key={index}>
               <div className='card '>
                 <div className='card-image'>
                   <img src={el.Poster} alt={picture} />
                 </div>
                 <div className='card-content'>
                   <h6>{el.title}</h6>
-                  <p>genre</p>
+          <p>{el.imdbID}</p>
                   <p>released</p>
                   <p>rating</p>
                 </div>
@@ -60,4 +57,10 @@ const mapStateToProps = state => {
     movies: state.movies
   };
 };
-export default connect(mapStateToProps, { fetchMovies })(UserMovies);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovies: () => dispatch(fetchMovies())
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserMovies);
