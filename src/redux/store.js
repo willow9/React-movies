@@ -1,11 +1,21 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevtools } from 'redux-devtools-extension/developmentOnly';
-import reducer from './reducers';
+import rootReducer from './reducers/rootReducer';
 
-const midleware = [thunk]
+import { reduxFirestore, getFirestore } from 'redux-firestore';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import FBConfig from '../config/FBConfig';
+
+const midleware = [thunk];
 // const initialState = {}
 
-const store = createStore(reducer, compose(applyMiddleware(...midleware)));
-
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reactReduxFirebase(FBConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }), // redux binding for firebase
+    reduxFirestore(FBConfig) // redux bindings for firestore
+  )
+);
 export default store;
