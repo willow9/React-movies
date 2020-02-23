@@ -33,11 +33,15 @@ const reducer = (state = initialState, action) => {
     case 'LOGIN_ERROR':
       return {
         ...state,
-        authError: 'login failed'
+        authError: action.err.message
       };
+
     case 'LOGIN_SUCCESS':
-      console.log('login success');
-      break;
+      console.log('auth success');
+      return {
+        ...state,
+        authError: null
+      };
     default:
       return state;
   }

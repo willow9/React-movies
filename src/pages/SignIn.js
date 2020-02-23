@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux"
-import {signIn} from "../redux"
+import { connect } from 'react-redux';
+import { signIn } from '../redux';
 
 export class SignIn extends Component {
   state = {
@@ -14,17 +14,18 @@ export class SignIn extends Component {
     });
   };
 
-  handleSubmit = e =>{
-      e.preventDefault()
-      console.log("halfway");
-      
-      this.props.signIn(this.state)
-
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.props);
+    this.props.signIn(this.state);
+  };
   render() {
+    // const { errMsg} = this.props
+    // console.log(errMsg);
+
     return (
       <div className='container'>
-        <form onSubmit = {this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className='row'>
             <div className='input-field '>
               <input
@@ -48,14 +49,20 @@ export class SignIn extends Component {
             </div>
           </div>
           <button className='btn pink lighten-1 z-depth-0'>Sign In</button>
+          <div className='red-text center'>{this.props.errMsg ? <p> {this.props.errMsg}</p> : null}</div>
         </form>
       </div>
     );
   }
 }
-const mapDispatchToProps = (dispatch)=>{
-    return{
-        signIn: (credentials) => dispatch(signIn(credentials))
-    }
-}
-export default connect(null, mapDispatchToProps)(SignIn);
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: credentials => dispatch(signIn(credentials))
+  };
+};
+const mapStateToProps = state => {
+  return {
+    errMsg: state.movieReducer.authError
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
