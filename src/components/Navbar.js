@@ -20,7 +20,7 @@ const links = auth.uid ?  <SignedInLinks />: <SignedOutLinks />
   );
 };
 const mapStateToProps = state => {
-  //  console.log(state.firebase.auth);
+  console.log(state);
 
   return {
     auth: state.firebase.auth

@@ -47,6 +47,19 @@ const reducer = (state = initialState, action) => {
       console.log('singed out successfuly');
       break;
 
+    case 'SIGNUP_SUCCES':
+      console.log('signed up successfuly');
+      return {
+        ...state,
+        authError: null
+      };
+    case 'SIGNUP_ERROR':
+      console.log('signed up failed');
+      return {
+        ...state,
+        authError: action.err.message
+      };
+
     default:
       return state;
   }
