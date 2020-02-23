@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
- import {connect} from "react-redux"
+import { connect } from 'react-redux';
+import { signOut } from '../redux';
 
-const Navbar = () => {
+const Navbar = props => {
+  const signOut = () => {
+    props.signOut();
+  };
   return (
     <nav className='nav-wrapper #927b7c'>
       <div className='container'>
@@ -11,16 +15,15 @@ const Navbar = () => {
         </Link>
         <ul className='right'>
           <li>
-          <Link to="/signin">Sign In</Link>
+            <Link to='/signin'>Sign In</Link>
           </li>
           <li>
-          <Link to="/signup">Sign Up</Link>
+            <Link to='/signup'>Sign Up</Link>
           </li>
           <li>
-            <a>Search</a>
-          </li>
-          <li>
-            <a>LogOut</a>
+            <Link to='/' onClick={signOut}>
+              Sign Out
+            </Link>
           </li>
           <li>
             <i className='material-icons'>close</i>
@@ -30,11 +33,15 @@ const Navbar = () => {
     </nav>
   );
 };
-const mapStateToProps= (state) =>{
+const mapStateToProps = state => {
   console.log(state);
-  
-  return{
-    
-  }
-}
-export default connect(mapStateToProps)(Navbar);
+
+  return {};
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

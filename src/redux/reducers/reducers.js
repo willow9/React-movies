@@ -42,6 +42,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         authError: null
       };
+
+    case 'SIGNOUT_SUCCESS':
+      console.log('singed out successfuly');
+      break;
+
     default:
       return state;
   }

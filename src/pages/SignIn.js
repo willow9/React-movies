@@ -16,13 +16,10 @@ export class SignIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props);
+    // console.log(this.props);
     this.props.signIn(this.state);
   };
   render() {
-    // const { errMsg} = this.props
-    // console.log(errMsg);
-
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit}>
