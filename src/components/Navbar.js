@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../redux';
+import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
 
-const Navbar = props => {
-  const signOut = () => {
-    props.signOut();
-  };
+const Navbar = ({auth}) => {
+const links = auth.uid ?  <SignedInLinks />: <SignedOutLinks />
   return (
     <nav className='nav-wrapper #927b7c'>
       <div className='container'>
@@ -14,34 +13,18 @@ const Navbar = props => {
           WTW
         </Link>
         <ul className='right'>
-          <li>
-            <Link to='/signin'>Sign In</Link>
-          </li>
-          <li>
-            <Link to='/signup'>Sign Up</Link>
-          </li>
-          <li>
-            <Link to='/' onClick={signOut}>
-              Sign Out
-            </Link>
-          </li>
-          <li>
-            <i className='material-icons'>close</i>
-          </li>
+         {links}
         </ul>
       </div>
     </nav>
   );
 };
 const mapStateToProps = state => {
-  console.log(state);
+  //  console.log(state.firebase.auth);
 
-  return {};
-};
-const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut())
+    auth: state.firebase.auth
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps)(Navbar);
