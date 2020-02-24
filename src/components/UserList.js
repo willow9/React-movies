@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUser } from '../redux';
-
+import { fetchUsers } from '../redux';
 
 class Users extends Component {
+  componentWillMount() {
+    this.props.fetch();
+  }
   render() {
     return (
       <>
@@ -17,18 +20,15 @@ class Users extends Component {
                   <li className='collection-item avatar valign-wrapper' key={el.id}>
                     <i className='material-icons circle '>avatar</i>
                     <Link to={`/users/${el.id}`}>
-                      
                       <span className='title valign-wrapper'>
                         {el.firstName} {el.lastName} {el.id}
                       </span>
-                     
                     </Link>
                   </li>
                 );
               })}
           </ul>
         </div>
-        <div className='col s12 m8 l9'> Display all movies</div>
       </>
     );
   }
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    add: () => dispatch(addUser())
+    add: () => dispatch(addUser()),
+    fetch: () => dispatch(fetchUsers())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

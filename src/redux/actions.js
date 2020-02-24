@@ -53,20 +53,43 @@ export const signUp = newUser => {
     const firebase = getFirebase();
     const firestore = getFirestore();
 
-    firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
-    .then((response) =>{
-      return firestore.collection('users').doc(response.user.uid)
-      .set({
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        initials: newUser.firstName[0]+ newUser.lastName[0]
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(newUser.email, newUser.password)
+      .then(response => {
+        return firestore
+          .collection('users')
+          .doc(response.user.uid)
+          .set({
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            initials: newUser.firstName[0] + newUser.lastName[0]
+          });
       })
-    })
-    .then(()=>{
-      dispatch({type: "SIGNUP_SUCCESS"})
-    })
-    .catch(err => {
-      dispatch({type: "SIGNUP_ERROR", err})
-    })
+      .then(() => {
+        dispatch({ type: 'SIGNUP_SUCCESS' });
+      })
+      .catch(err => {
+        dispatch({ type: 'SIGNUP_ERROR', err });
+      });
+  };
+};
+
+export const fetchUsers = () => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection('users')
+      .limit(10)
+      .get()
+      .then(querySnapshot => {
+        const users = [];
+        querySnapshot.forEach(doc => {
+          users.push({ id: doc.id, ...doc.data() });
+          return users;
+        });
+        dispatch({ type: 'FETCHUSERS_SUCCESS', users });
+      });
   };
 };

@@ -13,7 +13,7 @@ const initialState = {
     { id: 3, Title: 'Valkirie' },
     { id: 4, Title: 'Wespa' }
   ],
-  authError: null
+  authError: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         userCount: state.userCount + 1
       };
     case 'FETCH_MOVIES':
-      // console.log(action.payload.Search);
+      //  console.log(action.payload.Search);
 
       return {
         ...state,
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case 'LOGIN_SUCCESS':
-      console.log('auth success');
+       console.log('auth success');
       return {
         ...state,
         authError: null
@@ -59,7 +59,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         authError: action.err.message
       };
-
+    case 'FETCHUSERS_SUCCESS':
+      console.log('fetched successfuly');
+       console.log(action.users);
+      return {
+        ...state,
+        users: action.users
+      }
     default:
       return state;
   }
