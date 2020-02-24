@@ -60,8 +60,8 @@ const reducer = (state = initialState, action) => {
         authError: action.err.message
       };
     case 'FETCHUSERS_SUCCESS':
-      console.log('fetched successfuly');
-       console.log(action.users);
+      // console.log('fetched successfuly');
+      //  console.log(action.users);
       return {
         ...state,
         users: action.users

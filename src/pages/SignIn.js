@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../redux';
+import { Redirect } from 'react-router-dom';
 
 export class SignIn extends Component {
   state = {
@@ -20,6 +21,7 @@ export class SignIn extends Component {
     this.props.signIn(this.state);
   };
   render() {
+    if (this.props.auth.uid) return <Redirect to='/' />;
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit}>
@@ -59,7 +61,8 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = state => {
   return {
-    errMsg: state.movieReducer.authError
+    errMsg: state.movieReducer.authError,
+    auth: state.firebase.auth
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
