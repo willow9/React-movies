@@ -1,7 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Helvetica Neue', 'Times New Roman';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,6 +30,24 @@ nav {
 @media (max-width: 600px) {
   .card-image img {
     height: 37.5rem;
-   
   }
 }
+h6 {
+  color: rgb(44, 20, 66);
+  text-align: center;
+  font-family: 'Times New Roman', Times;
+  min-height: 40px;
+}
+.card .card-content {
+  padding: 10px 10px 0 10px;
+  border-radius: 0 0 2px 2px;
+}
+
+.commend {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  font-family: 'Helvetica Neue';
+  text-transform: uppercase;
+}
+

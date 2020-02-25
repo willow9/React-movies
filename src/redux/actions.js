@@ -93,3 +93,16 @@ export const fetchUsers = () => {
       });
   };
 };
+
+export const searchMovies = (title) =>dispatch => {
+  axios
+    .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=${title}`)
+    .then(res => {
+      dispatch({
+        type: 'FETCH_MOVIES',
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+

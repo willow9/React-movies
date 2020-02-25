@@ -13,7 +13,7 @@ const User = props => {
     <div>
       <div className='row'>
         <UserProfile user={user}></UserProfile>
-        <UserMovies />
+        <UserMovies title = {'Favorite Movies'}/>
       </div>
     </div>
   );
