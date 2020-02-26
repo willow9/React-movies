@@ -50,4 +50,7 @@ h6 {
   font-family: 'Helvetica Neue';
   text-transform: uppercase;
 }
-
+.ReactModal__Overlay,
+.ReactModal__Overlay--after-open {
+  z-index: 1;
+}

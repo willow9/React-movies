@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies, searchMovies } from '../redux';
+import Modal from 'react-modal';
 
 const UserMovies = ({ fetchMovies, movies, title }) => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const UserMovies = ({ fetchMovies, movies, title }) => {
 
   return (
     <div>
+      <Modal isOpen={true}>Hello from modal</Modal>
       <div className='col s12 m8 l8 '>
         {title && <h3 className='center'>Favorite Movies</h3>}
         <div className='row'>
@@ -31,9 +33,8 @@ const UserMovies = ({ fetchMovies, movies, title }) => {
                       <p>IMDB ID: {el.imdbID}</p>
                       <p>{el.Year} year</p>
                     </div>
-                    <button className="btn waves-effect waves-light commend" >Commend</button>
+                    <button className='btn waves-effect waves-light commend'>Commend</button>
                   </div>
-                  
                 </div>
               );
             })
