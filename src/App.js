@@ -5,6 +5,7 @@ import UserProfile from './pages/User';
 import Dashboard from './pages/Dashboard';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import TestingModal from './pages/TestingModal';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path='/users/:id' component={UserProfile} />
           <Route exaxt path='/signup' component={SignUp} />
           <Route exaxt path='/signin' component={SignIn} />
+          <Route exaxt path='/testing' component={TestingModal} />
         </Switch>
       </BrowserRouter>
     );

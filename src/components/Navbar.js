@@ -12,6 +12,9 @@ const links = auth.uid ?  <SignedInLinks />: <SignedOutLinks />
         <Link to='/' className='brand-logo'>
           WTW
         </Link>
+        <Link to='/testing' className="right">
+          Testing Modal
+        </Link>
         <ul className='right'>
          {links}
         </ul>

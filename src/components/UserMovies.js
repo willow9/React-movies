@@ -15,7 +15,7 @@ const UserMovies = ({ fetchMovies, movies, title }) => {
 
   return (
     <div>
-      <Modal isOpen={true}>Hello from modal</Modal>
+      <Modal isOpen={false}>Hello from modal</Modal>
       <div className='col s12 m8 l8 '>
         {title && <h3 className='center'>Favorite Movies</h3>}
         <div className='row'>
