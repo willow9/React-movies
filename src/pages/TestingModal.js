@@ -3,37 +3,75 @@ import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies, searchMovies } from '../redux';
 import Modal from 'react-modal';
+import ModalContent from '../components/ModalContent';
 
 class UserMovies extends Component {
   // ({ fetchMovies, movies, title }) => {
   //   useEffect(() => {
   //     fetchMovies();
   //   }, [fetchMovies]);
-//   const { fetchMovies, movies, title } = this.props;
-state = {
-    isOpen: false
-}
+  //   const { fetchMovies, movies, title } = this.props;
+  state = {
+    isOpen: false,
+    movieIndex: null
+  };
   componentWillMount() {
-    this.props.fetchMovies()
+    this.props.fetchMovies();
   }
-   toggle  = () =>{
-    this.setState({isOpen:!this.state.isOpen})
-   }
+  toggle = e => {
+    console.log(e.target.id);
+
+    this.setState({ isOpen: !this.state.isOpen, movieIndex: e.target.id });
+  };
 
   render() {
-   
     return (
       <div>
-        <Modal isOpen={this.state.isOpen}>{ (this.props.movies[0].Title)} 
+        {/* <Modal isOpen={this.state.isOpen}>{ (this.props.movies[0].Title)} 
         <div> Hello</div>
         <button onClick = {this.toggle}>Toggle</button>
-        </Modal>
-        <button onClick = {this.toggle}>Toggle Modal</button>
+        </Modal> */}
+        <React.Fragment>
+          <ModalContent>
+            {this.state.isOpen ? (
+              <div className='modalas-background'>
+                {/* <div className='modalas-content'>
+                  portal is opening now... {this.props.movies[this.state.movieIndex].Title}
+                  <button onClick={this.toggle}>Close</button>
+                  <div className='col l3 card-container'> */}
+                    <div className='col s12 m6 l1' key={this.state.movieIndex}>
+                      <div className='card '>
+                        <div className='card-image'>
+                          <img src={this.props.movies[this.state.movieIndex].Poster} alt={picture} />
+                        </div>
+                        <div className='card-content'>
+                          <h6>{this.props.movies[this.state.movieIndex].Title}</h6>
+                          <hr />
+                          <p>IMDB ID: {this.props.movies[this.state.movieIndex].imdbID}</p>
+                          <p>{this.props.movies[this.state.movieIndex].Year} year</p>
+                        </div>
+                        <button
+                          onClick={this.toggle}
+                          className='btn waves-effect waves-light commend'
+                          id={this.state.movieIndex}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                    <div className='col s6 m6 l1 comment'>here will be comment form</div>
+                  </div>
+              //   </div>
+              // </div>
+            ) : null}
+          </ModalContent>
+        </React.Fragment>
+        <button onClick={this.toggle}>Toggle Modal</button>
         <div className='col s12 m8 l8 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
             {this.props.movies ? (
-              this.props.movies.map((el, index) => {
+              this.props.movies.slice(0, 2).map((el, index) => {
                 return (
                   <div className='col s12 m6 l3' key={index}>
                     <div className='card '>
@@ -46,7 +84,9 @@ state = {
                         <p>IMDB ID: {el.imdbID}</p>
                         <p>{el.Year} year</p>
                       </div>
-                      <button className='btn waves-effect waves-light commend'>Commend</button>
+                      <button onClick={this.toggle} className='btn waves-effect waves-light commend' id={index}>
+                        Commend
+                      </button>
                     </div>
                   </div>
                 );

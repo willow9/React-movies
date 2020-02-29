@@ -50,7 +50,40 @@ h6 {
   font-family: 'Helvetica Neue';
   text-transform: uppercase;
 }
-.ReactModal__Overlay,
+/* .ReactModal__Overlay,
 .ReactModal__Overlay--after-open {
   z-index: 1;
+} */
+#portal {
+  position: relative;
+  z-index: 999;
 }
+.modalas-background {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modalas-content{
+  background-color: rgba(131, 161, 103, 0.98);
+  position: fixed;
+  height: 50%;
+  width: 50%;
+  top: 25%;
+  left: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-container{
+  background-color: skyblue;
+  
+}
+ .comment{
+  
+ }
