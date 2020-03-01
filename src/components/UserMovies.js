@@ -2,7 +2,7 @@ import React, { useEffect, Component } from 'react';
 import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies, searchMovies } from '../redux';
-import Modal from 'react-modal';
+import Modal1 from '../components/Modal';
 import Portal from '../components/Portal';
 
 class UserMovies extends Component {
@@ -25,9 +25,7 @@ class UserMovies extends Component {
     return (
       <div>
         {/* <Modal isOpen={this.state.isOpen}>Hello from modalo</Modal> */}
-        {this.state.isOpen? <Portal><div className = "modalas-background">Hello from portal
-        <button>Untoggle</button>
-        </div>
+        {this.state.isOpen? <Portal><Modal1 props = {this.props }></Modal1>
         </Portal>
         : null}
         <button onClick = {this.toggle}>Togle</button>
