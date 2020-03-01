@@ -3,8 +3,9 @@ import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies, searchMovies } from '../redux';
 import Modal from 'react-modal';
+import Portal from '../components/Portal';
 
-class UserMovies extends Component {
+class UserMovies1 extends Component {
   // ({ fetchMovies, movies, title }) => {
   //   useEffect(() => {
   //     fetchMovies();
@@ -28,6 +29,7 @@ state = {
         <div> Hello</div>
         <button onClick = {this.toggle}>Toggle</button>
         </Modal>
+        <Portal>Hello from portal</Portal>
         <button onClick = {this.toggle}>Toggle Modal</button>
         <div className='col s12 m8 l8 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
@@ -72,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     searchMovies: title => dispatch(searchMovies(title))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(UserMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(UserMovies1);

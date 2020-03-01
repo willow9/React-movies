@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-// import {portalRoot} from '../index'
+import { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 const portalRoot = document.getElementById('portal');
- class ModalContent extends Component {
+class Portal extends Component {
   constructor() {
     super();
     // 1: Create a new div that wraps the component
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
     //  this.el.className = "modal"
   }
   // 2: Append the element to the DOM when it mounts
@@ -25,4 +24,4 @@ const portalRoot = document.getElementById('portal');
   }
 }
 
-export default ModalContent;
+export default Portal;
