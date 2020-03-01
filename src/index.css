@@ -3,7 +3,6 @@ body {
   font-family: 'Helvetica Neue', 'Times New Roman';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
@@ -60,7 +59,7 @@ h6 {
   z-index: 999;
 }
 .modalas-background {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   height: 100%;
   width: 100%;
@@ -70,10 +69,9 @@ h6 {
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  
 }
-.modalas-content{
-  background-color: rgba(131, 161, 103, 0.98);
+.modalas-content {
+  background-color: #d0dbdbfa;
   /* position: fixed; */
   /* height: 50%;
   width: 50%;
@@ -82,17 +80,16 @@ h6 {
   /* display: flex; */
   align-items: center;
   justify-content: center;
+  color: whitesmoke;
 }
-.card-container1{
-  background-color: skyblue;
+.card-container1 {
+  /* background-color: skyblue; */
   height: 100%;
-    width: 50%;
-  
+  width: 50%;
 }
-.card-container{
+.card-container {
   background-color: rgb(232, 135, 235);
-  
+
   height: 100%;
-    width: 50%;
+  width: 50%;
 }
- 

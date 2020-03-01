@@ -13,54 +13,27 @@ class UserMovies extends Component {
   //  const { fetchMovies, movies, title } = this.props;
   state = {
     isOpen: false,
-    movieIndex: null
+    movieIndex: null,
+    range: 0
   };
   componentWillMount() {
     this.props.fetchMovies();
   }
   toggle = e => {
-    console.log(e.target.id);
-
     this.setState({ isOpen: !this.state.isOpen, movieIndex: e.target.id });
+  };
+  handleRangeInput = e => {
+    this.setState({ range: e.target.value });
   };
 
   render() {
     return (
       <div>
-        {/* <Modal isOpen={this.state.isOpen}>{ (this.props.movies[0].Title)} 
-        <div> Hello</div>
-        <button onClick = {this.toggle}>Toggle</button>
-        </Modal> */}
         <React.Fragment>
           <ModalContent>
             {this.state.isOpen ? (
               <div className=' modalas-background'>
                 <div className=' container row col s12 modalas-content'>
-                  {/* portal is opening now... {this.props.movies[this.state.movieIndex].Title}
-                  <button onClick={this.toggle}>Close</button> */}
-                  {/* <div className='col l3 card-container'> */}
-
-                  {/* <div className='col s12 m6 l1' key={this.state.movieIndex}>
-                      <div className='card '>
-                        <div className='card-image'>
-                          <img src={this.props.movies[this.state.movieIndex].Poster} alt={picture} />
-                        </div>
-                        <div className='card-content'>
-                          <h6>{this.props.movies[this.state.movieIndex].Title}</h6>
-                          <hr />
-                          <p>IMDB ID: {this.props.movies[this.state.movieIndex].imdbID}</p>
-                          <p>{this.props.movies[this.state.movieIndex].Year} year</p>
-                        </div>
-                        <button
-                          onClick={this.toggle}
-                          className='btn waves-effect waves-light commend'
-                          id={this.state.movieIndex}
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div> */}
-
                   <div className='col s12 m4 l4 card-container1'>
                     <div className='col s12 m12 l12' key={this.state.movieIndex}>
                       <div className='card '>
@@ -96,6 +69,22 @@ class UserMovies extends Component {
                         <label for='textarea2'>Rate</label>
                       </div>
                     </div>
+                    <form action='#'>
+                      <div className='col s12'>
+                        <p className='range-field'>
+                          <label htmlFor='inputId'>Rating: {this.state.range}</label>
+                          <input
+                            type='range'
+                            id='inputId'
+                            name='range'
+                            value={this.state.range}
+                            onChange={this.handleRangeInput}
+                            min='0'
+                            max='100'
+                          />
+                        </p>
+                      </div>
+                    </form>
                   </div>
                 </div>
                 {/* //   </div> */}
