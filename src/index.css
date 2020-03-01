@@ -3,6 +3,7 @@ body {
   font-family: 'Helvetica Neue', 'Times New Roman';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -68,22 +69,30 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  
 }
 .modalas-content{
   background-color: rgba(131, 161, 103, 0.98);
-  position: fixed;
-  height: 50%;
+  /* position: fixed; */
+  /* height: 50%;
   width: 50%;
   top: 25%;
-  left: 25%;
-  display: flex;
+  left: 25%; */
+  /* display: flex; */
   align-items: center;
   justify-content: center;
 }
-.card-container{
+.card-container1{
   background-color: skyblue;
+  height: 100%;
+    width: 50%;
   
 }
- .comment{
+.card-container{
+  background-color: rgb(232, 135, 235);
   
- }
+  height: 100%;
+    width: 50%;
+}
+ 
