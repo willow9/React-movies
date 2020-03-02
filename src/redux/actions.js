@@ -17,6 +17,18 @@ export const fetchMovies = () => dispatch => {
     })
     .catch(err => console.log(err));
 };
+export const fetchMovie = imdbId => dispatch => {
+  axios
+    .get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbId}`)
+    .then(res => {
+      dispatch({
+        type: 'FETCH_MOVIE',
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => console.log(err));
+};
 
 export const signIn = credentials => {
   return (dispatch, getState, { getFirebase }) => {
@@ -94,7 +106,7 @@ export const fetchUsers = () => {
   };
 };
 
-export const searchMovies = (title) =>dispatch => {
+export const searchMovies = title => dispatch => {
   axios
     .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=${title}`)
     .then(res => {
@@ -105,4 +117,3 @@ export const searchMovies = (title) =>dispatch => {
     })
     .catch(err => console.log(err));
 };
-

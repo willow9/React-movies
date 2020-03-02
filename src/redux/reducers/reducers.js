@@ -14,6 +14,7 @@ const initialState = {
     { id: 4, Title: 'Wespa' }
   ],
   authError: null,
+  movie: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         movies: action.payload.Search
       };
+    case 'FETCH_MOVIE':
+      return {
+        ...state,
+        movie: action.payload
+      };
     case 'LOGIN_ERROR':
       return {
         ...state,
@@ -37,7 +43,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case 'LOGIN_SUCCESS':
-       console.log('auth success');
+      console.log('auth success');
       return {
         ...state,
         authError: null
@@ -65,7 +71,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.users
-      }
+      };
     default:
       return state;
   }

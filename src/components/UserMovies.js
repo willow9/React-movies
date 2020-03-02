@@ -12,7 +12,8 @@ class UserMovies extends Component {
   //   }, [fetchMovies]);
 
   state = {
-    isOpen: false
+    isOpen: false,
+    imdbId: ''
   };
   componentWillMount() {
     this.props.fetchMovies();
@@ -20,15 +21,21 @@ class UserMovies extends Component {
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+  selectMovie = e => {
+    this.setState({ imdbId: e.target.id });
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
   render() {
     return (
       <div>
         {/* <Modal isOpen={this.state.isOpen}>Hello from modalo</Modal> */}
-        {this.state.isOpen? <Portal><Modal1 props = {this.props }></Modal1>
-        </Portal>
-        : null}
-        <button onClick = {this.toggle}>Togle</button>
+        {this.state.isOpen ? (
+          <Portal>
+            <Modal1 imdbId={this.state.imdbId}></Modal1>
+          </Portal>
+        ) : null}
+        <button onClick={this.toggle}>Togle</button>
         <div className='col s12 m8 l8 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
@@ -46,7 +53,13 @@ class UserMovies extends Component {
                         <p>IMDB ID: {el.imdbID}</p>
                         <p>{el.Year} year</p>
                       </div>
-                      <button className='btn waves-effect waves-light commend'>Commend</button>
+                      <button
+                        onClick={this.selectMovie}
+                        className='btn waves-effect waves-light commend'
+                        id={el.imdbID}
+                      >
+                        Commend
+                      </button>
                     </div>
                   </div>
                 );

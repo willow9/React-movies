@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import logo from './../images/logo512.png';
+import { connect } from 'react-redux';
+import { fetchMovie, searchMovies } from '../redux';
 
-export default class Modal1 extends Component {
+class Modal1 extends Component {
+  componentWillMount() {
+    this.props.fetchMovie(this.props.imdbId);
+  }
   render() {
-      console.log("is modali=");
-      
-      console.log(this.props);
-      
+    console.log('is modali=');
+
+    console.log(this.props);
+
     return (
       <div className='modalas-background'>
         <div class='card'>
           <div>
-            Hello from portal
+            <h1>Hello from portal</h1>
+            <h3>{this.props.movie.Plot}</h3>
             <button>Untoggle</button>
           </div>
 
@@ -22,9 +28,6 @@ export default class Modal1 extends Component {
             <span class='card-title activator grey-text text-darken-4'>
               Card Title<i class='material-icons right'>more_vert</i>
             </span>
-            <p>
-              <a href='#'>This is a link and blaljjsjdj kakakkak kakakkakakdnseuhrweu</a>
-            </p>
           </div>
           <div class='card-reveal'>
             <span class='card-title grey-text text-darken-4'>
@@ -37,3 +40,14 @@ export default class Modal1 extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    movie: state.movieReducer.movie
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovie: imdbId => dispatch(fetchMovie(imdbId))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Modal1);
