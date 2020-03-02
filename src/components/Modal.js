@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import logo from './../images/logo512.png';
 import { connect } from 'react-redux';
-import { fetchMovie, searchMovies } from '../redux';
+import { fetchMovie } from '../redux';
 
 class Modal1 extends Component {
   componentWillMount() {
     this.props.fetchMovie(this.props.imdbId);
+  }
+  toggle = () =>{
+    this.props.toggle()
   }
   render() {
     console.log('is modali=');
@@ -18,11 +21,11 @@ class Modal1 extends Component {
           <div>
             <h1>Hello from portal</h1>
             <h3>{this.props.movie.Plot}</h3>
-            <button>Untoggle</button>
+            <button onClick = {this.toggle}>Untoggle</button>
           </div>
 
           <div class='card-image waves-effect waves-block waves-light'>
-            <img class='activator' src={logo} />
+            <img class='activator' src={this.props.movie.Poster} />
           </div>
           <div class='card-content'>
             <span class='card-title activator grey-text text-darken-4'>

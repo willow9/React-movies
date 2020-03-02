@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
 import { fetchMovies, searchMovies } from '../redux';
@@ -32,7 +32,7 @@ class UserMovies extends Component {
         {/* <Modal isOpen={this.state.isOpen}>Hello from modalo</Modal> */}
         {this.state.isOpen ? (
           <Portal>
-            <Modal1 imdbId={this.state.imdbId}></Modal1>
+            <Modal1 imdbId={this.state.imdbId} toggle = {this.toggle.bind(this)}></Modal1>
           </Portal>
         ) : null}
         <button onClick={this.toggle}>Togle</button>
