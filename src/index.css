@@ -60,14 +60,23 @@ h6 {
   z-index: 999;
 }
 .modalas-background {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+}
+
+.modal-card {
+  max-height: 700px;
+  max-width: 700px;
+}
+.image-placeholder img {
+  width: 300px;
+  height: 500px;
 }
