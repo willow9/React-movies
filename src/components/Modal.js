@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './../images/logo512.png';
 import { connect } from 'react-redux';
-import { fetchMovie } from '../redux';
+import { fetchMovie, addToFavorites } from '../redux';
 
 class Modal1 extends Component {
   componentWillMount() {
@@ -10,6 +10,10 @@ class Modal1 extends Component {
   toggle = () => {
     this.props.toggle();
   };
+
+  addToFavorites = () => {
+    this.props.addToFavorites(this.props.movie);
+  };
   render() {
     console.log('is modali=');
 
@@ -17,12 +21,10 @@ class Modal1 extends Component {
 
     return (
       <div className='modalas-background'>
-        {/* <div className='container green'> */}
-
         <div className='card'>
           <div className='right-align '>
-            {1 == 1 ? (
-              <button className='waves-effect waves-light btn-small' onClick={this.toggle}>
+            {this.props.auth.uid ? (
+              <button className='waves-effect waves-light btn-small' onClick={() => this.addToFavorites()}>
                 add to favorites
               </button>
             ) : null}
@@ -33,11 +35,9 @@ class Modal1 extends Component {
           </div>
 
           {/* TITLE */}
-          {/* <div className='row'> */}
           <div className=' row center-align card-title1'>
             <h3>{this.props.movie.Title}</h3>
           </div>
-          {/* </div> */}
           {/* OUTER CARD CONTENT START*/}
 
           <div className='row outerDiv'>
@@ -88,12 +88,12 @@ class Modal1 extends Component {
 
           {/* INACTIVE CARD CONTENT */}
           <div className='card-reveal'>
-                <div className='col m12 l12 s12 green'>
-                  <span className='card-title grey-text text-darken-4'>
-                    Plot<i className='material-icons right'>close</i>
-                  </span>
-                  <p className='plot-text center-align'>{this.props.movie.Plot}</p>
-                </div>
+            <div className='col m12 l12 s12'>
+              <span className='card-title grey-text text-darken-4'>
+                Plot<i className='material-icons right'>close</i>
+              </span>
+              <p className='plot-text center-align'>{this.props.movie.Plot}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -102,12 +102,14 @@ class Modal1 extends Component {
 }
 const mapStateToProps = state => {
   return {
-    movie: state.movieReducer.movie
+    movie: state.movieReducer.movie,
+    auth: state.firebase.auth
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovie: imdbId => dispatch(fetchMovie(imdbId))
+    fetchMovie: imdbId => dispatch(fetchMovie(imdbId)),
+    addToFavorites: movie => dispatch(addToFavorites(movie))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Modal1);

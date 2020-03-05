@@ -6,3 +6,4 @@ export { signUp } from './actions';
 export { fetchUsers } from './actions';
 export { searchMovies } from './actions';
 export { fetchMovie } from './actions';
+export { addToFavorites } from './actions';

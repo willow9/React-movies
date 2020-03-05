@@ -29,13 +29,11 @@ class UserMovies extends Component {
   render() {
     return (
       <div>
-        {/* <Modal isOpen={this.state.isOpen}>Hello from modalo</Modal> */}
         {this.state.isOpen ? (
           <Portal>
             <Modal1 imdbId={this.state.imdbId} toggle = {this.toggle.bind(this)}></Modal1>
           </Portal>
         ) : null}
-        <button onClick={this.toggle}>Togle</button>
         <div className='col s12 m8 l8 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>

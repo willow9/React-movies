@@ -19,7 +19,7 @@ export const fetchMovies = () => dispatch => {
 };
 export const fetchMovie = imdbId => dispatch => {
   axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbId}`)
+    .get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbId}&plot=full`)
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIE',
@@ -116,4 +116,23 @@ export const searchMovies = title => dispatch => {
       });
     })
     .catch(err => console.log(err));
+};
+
+export const addToFavorites = movie => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    console.log('preparing to add video');
+    console.log(movie);
+    firestore
+      .collection('movies')
+      .doc(movie.imdbID)
+      .set(movie)
+      .then(() => {
+        'movie added';
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 };
