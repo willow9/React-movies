@@ -19,22 +19,32 @@ class Modal1 extends Component {
       <div className='modalas-background'>
         {/* <div className='container green'> */}
 
-        {/* TITLE */}
-
         <div className='card'>
-          <div className='row'>
-            <div className=' center-align grey'>
-              <h1>{this.props.movie.Title}</h1>
-              <button onClick={this.toggle}>Untoggle</button>
-            </div>
+          <div className='right-align '>
+            {1 == 1 ? (
+              <button className='waves-effect waves-light btn-small' onClick={this.toggle}>
+                add to favorites
+              </button>
+            ) : null}
+            <div className='btn-divider'></div>
+            <button className='waves-effect waves-light btn-small' onClick={this.toggle}>
+              close
+            </button>
           </div>
+
+          {/* TITLE */}
+          {/* <div className='row'> */}
+          <div className=' row center-align card-title1'>
+            <h3>{this.props.movie.Title}</h3>
+          </div>
+          {/* </div> */}
           {/* OUTER CARD CONTENT START*/}
 
-          <div className='row blue outerDiv'>
+          <div className='row outerDiv'>
             <div className='col l6 m6 s12 image-placeholder center-align'>
               <img src={this.props.movie.Poster} />
             </div>
-            <div className='col l6 m6 s12 red'>
+            <div className='col l6 m6 s12 '>
               <table>
                 <tbody>
                   <tr>
@@ -72,20 +82,18 @@ class Modal1 extends Component {
                   </tr>
                 </tbody>
               </table>
+              <span className=' activator waves-effect waves-light btn-large center-align commend'>Plot</span>
             </div>
-          </div>
-
-          <div className='card-content'>
-            <span className='card-title activator grey-text text-darken-4'>PlotOuter</span>
-            {/* </div> */}
           </div>
 
           {/* INACTIVE CARD CONTENT */}
           <div className='card-reveal'>
-            <span className='card-title grey-text text-darken-4'>
-              Plot<i className='material-icons right'>close</i>
-            </span>
-            <p>{this.props.movie.Plot}</p>
+                <div className='col m12 l12 s12 green'>
+                  <span className='card-title grey-text text-darken-4'>
+                    Plot<i className='material-icons right'>close</i>
+                  </span>
+                  <p className='plot-text center-align'>{this.props.movie.Plot}</p>
+                </div>
           </div>
         </div>
       </div>
