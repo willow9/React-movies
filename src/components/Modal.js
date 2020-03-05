@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './../images/logo512.png';
 import { connect } from 'react-redux';
-import { fetchMovie, addToFavorites } from '../redux';
+import { fetchMovie, addMovieToDB, addMovieToUserCollection } from '../redux';
 
 class Modal1 extends Component {
   componentWillMount() {
@@ -11,8 +11,9 @@ class Modal1 extends Component {
     this.props.toggle();
   };
 
-  addToFavorites = () => {
-    this.props.addToFavorites(this.props.movie);
+  addMovie = () => {
+    this.props.addMovieToDB(this.props.movie);
+    this.props.addMovieToUserCollection(this.props.auth.uid, this.props.imdbId);
   };
   render() {
     console.log('is modali=');
@@ -24,7 +25,7 @@ class Modal1 extends Component {
         <div className='card'>
           <div className='right-align '>
             {this.props.auth.uid ? (
-              <button className='waves-effect waves-light btn-small' onClick={() => this.addToFavorites()}>
+              <button className='waves-effect waves-light btn-small' onClick={() => this.addMovie()}>
                 add to favorites
               </button>
             ) : null}
@@ -109,7 +110,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMovie: imdbId => dispatch(fetchMovie(imdbId)),
-    addToFavorites: movie => dispatch(addToFavorites(movie))
+    addMovieToDB: movie => dispatch(addMovieToDB(movie)),
+    addMovieToUserCollection: (userUID,imdbId) => dispatch(addMovieToUserCollection(userUID, imdbId))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Modal1);

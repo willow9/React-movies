@@ -118,19 +118,28 @@ export const searchMovies = title => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const addToFavorites = movie => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
-    const firebase = getFirebase();
+export const addMovieToDB = movie => {
+  return (dispatch, getState, { getFirestore }) => {
+    // const firebase = getFirebase();
     const firestore = getFirestore();
-    console.log('preparing to add video');
-    console.log(movie);
+
     firestore
       .collection('movies')
       .doc(movie.imdbID)
       .set(movie)
-      .then(() => {
-        'movie added';
-      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+export const addMovieToUserCollection = (userUID, imdbId) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    firestore
+      .collection('users')
+      .doc(userUID)
+      .update({ "movies": firebase.firestore.FieldValue.arrayUnion(imdbId) })
       .catch(err => {
         console.log(err);
       });
