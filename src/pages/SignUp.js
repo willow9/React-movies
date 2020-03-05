@@ -81,7 +81,7 @@ export class SignUp extends Component {
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    errMsg: state.movieReducer.authError
+    errMsg: state.userReducer.authError
   };
 };
 const mapDispatchToProps = dispatch => {

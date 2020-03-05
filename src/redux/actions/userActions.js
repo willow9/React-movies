@@ -1,34 +1,3 @@
-import axios from 'axios';
-import { APIKey } from '../APIKey';
-
-export const addUser = user => {
-  return {
-    type: 'ADD_USER'
-  };
-};
-export const fetchMovies = () => dispatch => {
-  axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=Dracula`)
-    .then(res => {
-      dispatch({
-        type: 'FETCH_MOVIES',
-        payload: res.data
-      });
-    })
-    .catch(err => console.log(err));
-};
-export const fetchMovie = imdbId => dispatch => {
-  axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbId}&plot=full`)
-    .then(res => {
-      dispatch({
-        type: 'FETCH_MOVIE',
-        payload: res.data
-      });
-      console.log(res.data);
-    })
-    .catch(err => console.log(err));
-};
 
 export const signIn = credentials => {
   return (dispatch, getState, { getFirebase }) => {
@@ -101,37 +70,11 @@ export const fetchUsers = () => {
           users.push({ id: doc.id, ...doc.data() });
           return users;
         });
-        dispatch({ type: 'FETCHUSERS_SUCCESS', users });
+        dispatch({ type: 'FETCH_USERS_SUCCESS', users });
       });
   };
 };
 
-export const searchMovies = title => dispatch => {
-  axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=${title}`)
-    .then(res => {
-      dispatch({
-        type: 'FETCH_MOVIES',
-        payload: res.data
-      });
-    })
-    .catch(err => console.log(err));
-};
-
-export const addMovieToDB = movie => {
-  return (dispatch, getState, { getFirestore }) => {
-    // const firebase = getFirebase();
-    const firestore = getFirestore();
-
-    firestore
-      .collection('movies')
-      .doc(movie.imdbID)
-      .set(movie)
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
 export const addMovieToUserCollection = (userUID, imdbId) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -139,7 +82,7 @@ export const addMovieToUserCollection = (userUID, imdbId) => {
     firestore
       .collection('users')
       .doc(userUID)
-      .update({ "movies": firebase.firestore.FieldValue.arrayUnion(imdbId) })
+      .update({ movies: firebase.firestore.FieldValue.arrayUnion(imdbId) })
       .catch(err => {
         console.log(err);
       });

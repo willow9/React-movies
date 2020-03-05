@@ -21,7 +21,7 @@ const User = props => {
 
 const mapStateToProps = state => {
   return {
-    users: state.movieReducer.users
+    users: state.userReducer.users
   };
 };
 export default connect(mapStateToProps)(User);

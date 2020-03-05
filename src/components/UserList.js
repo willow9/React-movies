@@ -37,12 +37,11 @@ class Users extends Component {
 }
 const mapStateToProps = state => {
   return {
-    users: state.movieReducer.users
+    users: state.userReducer.users
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    add: () => dispatch(addUser()),
     fetch: () => dispatch(fetchUsers())
   };
 };

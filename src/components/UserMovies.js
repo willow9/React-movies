@@ -56,7 +56,7 @@ class UserMovies extends Component {
                         className='btn waves-effect waves-light commend'
                         id={el.imdbID}
                       >
-                        Commend
+                        more info
                       </button>
                     </div>
                   </div>

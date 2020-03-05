@@ -61,7 +61,7 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = state => {
   return {
-    errMsg: state.movieReducer.authError,
+    errMsg: state.userReducer.authError,
     auth: state.firebase.auth
   };
 };

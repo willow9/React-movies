@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import reducers from './reducers';
+import movieReducers from './movieReducers';
+import userReducers from './userReducers';
 
 import { firestoreReducer } from 'redux-firestore';
 import { firebaseReducer } from 'react-redux-firebase';
 
 const rootReducer = combineReducers({
-  movieReducer: reducers,
+  movieReducer: movieReducers,
+  userReducer: userReducers,
   firestore: firestoreReducer,
   firebase: firebaseReducer
 });
