@@ -1,9 +1,8 @@
-import initialState from "./initialState"
+import initialState from './initialState';
 
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_MOVIES':
-      //  console.log(action.payload.Search);
       return {
         ...state,
         movies: action.payload.Search
@@ -13,7 +12,17 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         movie: action.payload
       };
-    
+    case 'FETCH_USER_MOVIES':
+      return {
+        ...state,
+        movies: action.payload
+      };
+    case 'FETCH_USER_MOVIES_ERROR':
+      return {
+        ...state,
+        movies: []
+      };
+
     default:
       return state;
   }

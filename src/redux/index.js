@@ -8,3 +8,4 @@ export { searchMovies } from './actions/movieActions';
 export { fetchMovie } from './actions/movieActions';
 export { addMovieToDB } from './actions/movieActions';
 export { addMovieToUserCollection } from './actions/userActions';
+export {fetchUserMovies} from './actions/movieActions'

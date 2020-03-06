@@ -21,7 +21,6 @@ export const fetchMovie = imdbId => dispatch => {
         type: 'FETCH_MOVIE',
         payload: res.data
       });
-      console.log(res.data);
     })
     .catch(err => console.log(err));
 };
@@ -49,6 +48,36 @@ export const addMovieToDB = movie => {
       .set(movie)
       .catch(err => {
         console.log(err);
+      });
+  };
+};
+export const fetchUserMovies = userId => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+console.log(userId);
+
+    firestore
+      .collection('users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        // console.log('Document data:', doc.data().movies);
+        doc.data().movies ? firestore
+          .collection('movies')
+          .where('imdbID', 'in', [...doc.data().movies])
+          .get()
+          .then(querySnapshot => {
+            let movies= [];
+            querySnapshot.forEach(doc => {
+              // console.log(doc.id, ' => ', doc.data());
+
+              movies.push(doc.data());
+            });
+            dispatch({ type: 'FETCH_USER_MOVIES', payload: movies });
+          })
+          .catch(function(error) {
+            console.log('Error getting documents: ', error);
+          }) : dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
       });
   };
 };

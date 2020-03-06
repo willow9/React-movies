@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addUser } from '../redux';
 import { fetchUsers } from '../redux';
 
 class Users extends Component {

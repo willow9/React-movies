@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
-import { fetchMovies, searchMovies } from '../redux';
+import { fetchMovies, fetchUserMovies, searchMovies } from '../redux';
 import Modal1 from '../components/Modal';
 import Portal from '../components/Portal';
 
@@ -16,7 +16,12 @@ class UserMovies extends Component {
     imdbId: ''
   };
   componentWillMount() {
-    this.props.fetchMovies();
+    if(!this.props.title){
+     this.props.fetchMovies();
+    }
+    else{
+     this.props.fetchUserMovies(this.props.userId)
+    }
   }
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -80,6 +85,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMovies: () => dispatch(fetchMovies()),
+    fetchUserMovies: (userId) => dispatch(fetchUserMovies(userId)),
     searchMovies: title => dispatch(searchMovies(title))
   };
 };
