@@ -12,7 +12,7 @@ class Users extends Component {
     
     return (
       <>
-        <div className='names col s12 m4 l3'>
+        <div className='names col s12 m4 l3 hide-on-small-only'>
           <h3>Users</h3>
           <ul className='collection z-depth-5'>
             {this.props.users &&
@@ -30,6 +30,8 @@ class Users extends Component {
               })}
           </ul>
         </div>
+
+        
       </>
     );
   }
