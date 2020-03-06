@@ -26,16 +26,12 @@ const Navbar = ({ auth }) => {
         </Link>
         {/* Navbar links for large and medium screens only */}
         <div className='hide-on-small-only '>
-          <Link to='/testing' className='right '>
-            Testing Modal
-          </Link>
           <ul className='right'>{links}</ul>
         </div>
         {/* End */}
 
         {/* Navbar links for small screeens only */}
         <ul class='sidenav sidenav-close grey' id='mobile'>
-          <Link to='/testing'>Testing Modal</Link>
           <ul>{links}</ul>
         </ul>
         {/* End */}

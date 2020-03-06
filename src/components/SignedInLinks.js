@@ -7,7 +7,7 @@ const SignedInLinks = props => {
   const signOut = () => {
     props.signOut();
   };
-
+  
   return (
     <>
       <li>
@@ -15,11 +15,11 @@ const SignedInLinks = props => {
           Sign Out
         </NavLink>
       </li>
-      <li>
-        <NavLink to='/' className='btn btn-floating orange lighten-2'>
+      {/* <li>
+        <NavLink to='/' >
           {props.user.initials}
         </NavLink>{' '}
-      </li>
+      </li> */}
     </>
   );
 };
