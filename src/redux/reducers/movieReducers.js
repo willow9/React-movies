@@ -5,7 +5,7 @@ const movieReducer = (state = initialState, action) => {
     case 'FETCH_MOVIES':
       return {
         ...state,
-        movies: action.payload.Search
+        movies: action.payload
       };
     case 'FETCH_MOVIE':
       return {
@@ -22,7 +22,7 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         movies: []
       };
-
+    
     default:
       return state;
   }

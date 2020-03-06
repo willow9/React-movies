@@ -1,16 +1,23 @@
 import axios from 'axios';
 import { APIKey } from '../../APIKey';
 
-export const fetchMovies = () => dispatch => {
-  axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=Dracula`)
-    .then(res => {
-      dispatch({
-        type: 'FETCH_MOVIES',
-        payload: res.data
-      });
-    })
-    .catch(err => console.log(err));
+export const fetchMovies = () => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection('movies')
+      .get()
+      .then(querySnapshot => {
+        let movies = [];
+        querySnapshot.forEach(doc => {
+          movies.push(doc.data());
+        });
+        dispatch({ type: 'FETCH_MOVIES', payload: movies });
+        
+      })
+      .catch(err => console.log(err));;
+  };
 };
 
 export const fetchMovie = imdbId => dispatch => {
@@ -39,7 +46,6 @@ export const searchMovies = title => dispatch => {
 
 export const addMovieToDB = movie => {
   return (dispatch, getState, { getFirestore }) => {
-    // const firebase = getFirebase();
     const firestore = getFirestore();
 
     firestore
@@ -54,7 +60,6 @@ export const addMovieToDB = movie => {
 export const fetchUserMovies = userId => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-console.log(userId);
 
     firestore
       .collection('users')
@@ -62,22 +67,24 @@ console.log(userId);
       .get()
       .then(doc => {
         // console.log('Document data:', doc.data().movies);
-        doc.data().movies ? firestore
-          .collection('movies')
-          .where('imdbID', 'in', [...doc.data().movies])
-          .get()
-          .then(querySnapshot => {
-            let movies= [];
-            querySnapshot.forEach(doc => {
-              // console.log(doc.id, ' => ', doc.data());
+        doc.data().movies
+          ? firestore
+              .collection('movies')
+              .where('imdbID', 'in', [...doc.data().movies])
+              .get()
+              .then(querySnapshot => {
+                let movies = [];
+                querySnapshot.forEach(doc => {
+                  // console.log(doc.id, ' => ', doc.data());
 
-              movies.push(doc.data());
-            });
-            dispatch({ type: 'FETCH_USER_MOVIES', payload: movies });
-          })
-          .catch(function(error) {
-            console.log('Error getting documents: ', error);
-          }) : dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
+                  movies.push(doc.data());
+                });
+                dispatch({ type: 'FETCH_USER_MOVIES', payload: movies });
+              })
+              .catch(function(error) {
+                console.log('Error getting documents: ', error);
+              })
+          : dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
       });
   };
 };
