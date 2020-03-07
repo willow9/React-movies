@@ -42,7 +42,7 @@ class UserMovies extends Component {
         <div className='col s12 m10 l10 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
-            {this.props.movies ? (
+            {this.props.movies.length>0 ? (
               this.props.movies.map((el, index) => {
                 return (
                   <div className='col s12 m3 l2' key={index}>

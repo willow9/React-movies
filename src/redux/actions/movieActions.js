@@ -87,3 +87,8 @@ export const fetchUserMovies = userId => {
       });
   };
 };
+export const clearMovies = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
+  };
+};

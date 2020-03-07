@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../redux';
+import { signOut, fetchMovies } from '../redux';
 
 const SignedInLinks = props => {
   const signOut = () => {
     props.signOut();
+    props.reloadMovies()
   };
   
   return (
@@ -32,7 +33,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    reloadMovies: () => dispatch(fetchMovies())
   };
 };
 

@@ -9,3 +9,4 @@ export { fetchMovie } from './actions/movieActions';
 export { addMovieToDB } from './actions/movieActions';
 export { addMovieToUserCollection } from './actions/userActions';
 export {fetchUserMovies} from './actions/movieActions'
+export {clearMovies} from './actions/movieActions'

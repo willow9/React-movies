@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchMovies } from '../redux';
+import { searchMovies, clearMovies } from '../redux';
 
 class SearchBar extends Component {
   state = {
@@ -14,8 +14,12 @@ class SearchBar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.title !== '') {this.props.searchMovies(this.state.title);}
-    else {console.log('empty?');
+    if (this.state.title !== '') {
+      this.props.searchMovies(this.state.title);
+      this.setState({title:""})
+      document.getElementById("title").value = ""
+    } else {
+      this.props.clearMovies()
     }
   };
   render() {
@@ -41,7 +45,8 @@ const mapDispatchToProps = dispatch => {
   console.log('hello');
 
   return {
-    searchMovies: title => dispatch(searchMovies(title))
+    searchMovies: title => dispatch(searchMovies(title)),
+    clearMovies:() => dispatch(clearMovies())
   };
 };
 export default connect(null, mapDispatchToProps)(SearchBar);
