@@ -14,9 +14,8 @@ export const fetchMovies = () => {
           movies.push(doc.data());
         });
         dispatch({ type: 'FETCH_MOVIES', payload: movies });
-        
       })
-      .catch(err => console.log(err));;
+      .catch(err => console.log(err));
   };
 };
 
@@ -38,7 +37,7 @@ export const searchMovies = title => dispatch => {
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIES',
-        payload: res.data
+        payload: res.data.Search
       });
     })
     .catch(err => console.log(err));

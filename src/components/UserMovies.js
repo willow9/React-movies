@@ -39,13 +39,13 @@ class UserMovies extends Component {
             <Modal1 imdbId={this.state.imdbId} toggle = {this.toggle.bind(this)}></Modal1>
           </Portal>
         ) : null}
-        <div className='col s12 m8 l8 '>
+        <div className='col s12 m10 l10 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
             {this.props.movies ? (
               this.props.movies.map((el, index) => {
                 return (
-                  <div className='col s12 m6 l3' key={index}>
+                  <div className='col s12 m3 l2' key={index}>
                     <div className='card '>
                       <div className='card-image'>
                         <img src={el.Poster} alt={picture} />

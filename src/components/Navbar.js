@@ -16,7 +16,7 @@ const Navbar = ({ auth }) => {
 
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
-    <nav className='nav-wrapper #927b7c '>
+    <nav className='nav-wrapper #927b7c'>
       <div className='container'>
         <i href='#' data-target='mobile' className='sidenav-trigger hide-on-med-and-up'>
           <i className='material-icons'>menu</i>
@@ -31,9 +31,11 @@ const Navbar = ({ auth }) => {
         {/* End */}
 
         {/* Navbar links for small screeens only */}
-        <ul class='sidenav sidenav-close grey' id='mobile'>
-          <ul>{links}</ul>
-        </ul>
+        <div class='sidenav sidenav-close' id='mobile'>
+          <ul>{links}
+          
+          </ul>
+        </div>
         {/* End */}
       </div>
     </nav>

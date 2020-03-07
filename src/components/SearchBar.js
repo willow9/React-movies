@@ -22,7 +22,7 @@ class SearchBar extends Component {
     return (
       <>
         <h3 className='center'>Search</h3>
-        <form onSubmit={this.handleSubmit} class='col s8'>
+        <form onSubmit={this.handleSubmit} class='col s10'>
           <div class='input-field col s11'>
             <input onChange={this.handleChange} id='title' type='text' class='validate' />
             <label for='title'>Title</label>

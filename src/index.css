@@ -10,15 +10,24 @@ code {
 }
 
 nav {
-  background-color: #927b7c;
+  background-color:  #05474f;
   margin: 0 5px 0 5px;
   width: unset;
 }
-.names {
-  background-color: aqua;
+.user-list-col {
+  background-color: #05474f;
+  position: sticky;
+  top: 0;
+  margin-top: -20px;
+  height: 100vh;
 }
 .collection .collection-item {
   border-bottom: unset;
+  background-color: unset;
+  
+}
+.collection{
+  border: unset;
 }
 .row {
   margin: 10px 5px 20px 5px;
@@ -49,10 +58,6 @@ h6 {
   margin-top: 10px;
   font-family: 'Helvetica Neue';
   text-transform: uppercase;
-}
-.ReactModal__Overlay,
-.ReactModal__Overlay--after-open {
-  z-index: 1;
 }
 
 #portal {
@@ -103,4 +108,20 @@ h6 {
 .card-reveal p {
   /* text-transform: capitalize; */
   font-size: 20px;
+}
+
+.sidenav li > a {
+  font-size: 20px;
+  color: aliceblue;
+}
+.sidenav {
+  background-color: #478c8d;
+  width: unset;
+}
+.user-name-in-list {
+  font-size: 16px;
+  color: aliceblue;
+}
+.users-collection {
+   background-color: unset;
 }
