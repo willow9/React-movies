@@ -2,12 +2,13 @@
 ## Movies app
 An app for searching movies in the database, scanning the description and poster, and saving some of them as favorites.
 
-### `Stack`
-App created using React library, Redux for the state management, Firebase for user authentication and data storing, OMDb API (the open movie database) for movie search.
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Stack
+App created using: 
+* React library 
+* Redux for the state management, 
+* Firebase for user authentication and data storing, 
+* OMDb API (the open movie database) for movie search,
+* Materialize for style.
 
 ### `npm run build`
 
