@@ -16,11 +16,11 @@ const SignedInLinks = props => {
           Sign Out
         </NavLink>
       </li>
-      {/* <li>
+      <li>
         <NavLink to='/' >
           {props.user.initials}
         </NavLink>{' '}
-      </li> */}
+      </li>
     </>
   );
 };

@@ -3,6 +3,7 @@ body {
   font-family: 'Helvetica Neue', 'Times New Roman';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e6f0f0;
 }
 
 code {
@@ -10,7 +11,7 @@ code {
 }
 
 nav {
-  background-color:  #05474f;
+  background-color: #05474f;
   margin: 0 5px 0 5px;
   width: unset;
 }
@@ -24,9 +25,8 @@ nav {
 .collection .collection-item {
   border-bottom: unset;
   background-color: unset;
-  
 }
-.collection{
+.collection {
   border: unset;
 }
 .row {
@@ -123,5 +123,5 @@ h6 {
   color: aliceblue;
 }
 .users-collection {
-   background-color: unset;
+  background-color: unset;
 }

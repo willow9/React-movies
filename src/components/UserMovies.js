@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import picture from '../images/logo512.png';
+import picture from '../images/noPicture.jpg';
 import { connect } from 'react-redux';
 import { fetchMovies, fetchUserMovies, searchMovies } from '../redux';
 import Modal1 from '../components/Modal';
@@ -16,11 +16,10 @@ class UserMovies extends Component {
     imdbId: ''
   };
   componentWillMount() {
-    if(!this.props.title){
-     this.props.fetchMovies();
-    }
-    else{
-     this.props.fetchUserMovies(this.props.userId)
+    if (!this.props.title) {
+      this.props.fetchMovies();
+    } else {
+      this.props.fetchUserMovies(this.props.userId);
     }
   }
   toggle = () => {
@@ -36,19 +35,19 @@ class UserMovies extends Component {
       <div>
         {this.state.isOpen ? (
           <Portal>
-            <Modal1 imdbId={this.state.imdbId} toggle = {this.toggle.bind(this)}></Modal1>
+            <Modal1 imdbId={this.state.imdbId} toggle={this.toggle.bind(this)}></Modal1>
           </Portal>
         ) : null}
         <div className='col s12 m10 l10 '>
           {this.props.title && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
-            {this.props.movies.length>0 ? (
+            {this.props.movies.length > 0 ? (
               this.props.movies.map((el, index) => {
                 return (
                   <div className='col s12 m3 l2' key={index}>
                     <div className='card '>
                       <div className='card-image'>
-                        <img src={el.Poster} alt={picture} />
+                        <img src={el.Poster != 'N/A' ? el.Poster : picture} alt='picture' />
                       </div>
                       <div className='card-content'>
                         <h6>{el.Title}</h6>
@@ -85,7 +84,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchMovies: () => dispatch(fetchMovies()),
-    fetchUserMovies: (userId) => dispatch(fetchUserMovies(userId)),
+    fetchUserMovies: userId => dispatch(fetchUserMovies(userId)),
     searchMovies: title => dispatch(searchMovies(title))
   };
 };
