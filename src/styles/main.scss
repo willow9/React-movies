@@ -1,0 +1,140 @@
+$dark-green: #05474f;
+$light-green: #e6f0f0;
+
+body {
+  margin-left: 5px;
+  font-family: 'Helvetica Neue', 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e6f0f0;
+}
+
+//Overwriting default styles of default elements and Materialize classes
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: $dark-green;
+  width: unset;
+  z-index: 1000;
+}
+
+.collection {
+  border: unset;
+  .collection-item {
+    border-bottom: unset;
+    background-color: unset;
+  }
+}
+@media (min-width: 600px) {
+  .card-image {
+    img {
+      height: 18.75rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    .card-image {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+    }
+  }
+}
+.card {
+  max-width: 700px;
+  .card-content {
+    padding: 10px 10px 0 10px;
+    border-radius: 0 0 2px 2px;
+    height: 130px;
+  }
+}
+
+//Custom classes
+
+#portal {
+  position: relative;
+  z-index: 9999;
+}
+
+.modal-background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.user-list-col {
+  position: sticky;
+  top: 72px;
+  margin-top: -20px;
+  height: 100vh;
+  background-color: $dark-green;
+  .users-collection {
+    background-color: unset;
+    .user-name-in-list {
+      font-size: 16px;
+      color: aliceblue;
+    }
+  }
+}
+
+.wide-btn {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  font-family: 'Helvetica Neue';
+  text-transform: uppercase;
+}
+
+.modal-image-placeholder {
+  img {
+    width: 300px;
+    height: 500px;
+  }
+}
+.card-header {
+  display: grid;
+  margin: 10px;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: darken(teal, 5%);
+  font-family: 'Helvetica Neue';
+  text-transform: uppercase;
+}
+.btn-divider {
+  width: 5px;
+  height: auto;
+  display: inline-block;
+}
+
+.sidenav li a {
+  font-size: 16px;
+  font-family: 'Helvetica Neue';
+  color: aliceblue;
+  &:hover {
+    font-size: 18px;
+  }
+}
+.sidenav {
+  background-color: #478c8d;
+  width: unset;
+
+  li a {
+    font-size: 16px;
+    font-family: 'Helvetica Neue';
+    color: aliceblue;
+    &:hover {
+      font-size: 18px;
+    }
+  }
+}

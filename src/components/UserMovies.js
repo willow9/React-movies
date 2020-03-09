@@ -47,7 +47,7 @@ class UserMovies extends Component {
                   <div className='col s12 m3 l2' key={index}>
                     <div className='card '>
                       <div className='card-image'>
-                        <img src={el.Poster != 'N/A' ? el.Poster : picture} alt='picture' />
+                        <img src={el.Poster !== 'N/A' ? el.Poster : picture} alt="" />
                       </div>
                       <div className='card-content'>
                         <h6>{el.Title}</h6>
@@ -57,7 +57,7 @@ class UserMovies extends Component {
                       </div>
                       <button
                         onClick={this.selectMovie}
-                        className='btn waves-effect waves-light commend'
+                        className='btn waves-effect waves-light wide-btn'
                         id={el.imdbID}
                       >
                         more info
