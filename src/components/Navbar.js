@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-import M from 'materialize-css/dist/js/materialize.min.js';
+//   import M from 'materialize-css/dist/js/materialize.min.js';
+//  import M from 'materialize-sass/materialize.min.js'
 
 const Navbar = ({ auth }) => {
   useEffect(() => {
     var elems = document.querySelectorAll('.sidenav');
-    var instance = M.Sidenav.init(elems, {
+    var instance = window.M.Sidenav.init(elems, {
       edge: 'left',
       inDuration: 250
     });

@@ -21,7 +21,7 @@ class Modal1 extends Component {
     console.log(this.props);
 
     return (
-      <div className='modalas-background'>
+      <div className='modal-background'>
         <div className='card'>
           <div className='right-align '>
             {this.props.auth.uid ? (
@@ -36,13 +36,13 @@ class Modal1 extends Component {
           </div>
 
           {/* TITLE */}
-          <div className=' row center-align card-title1'>
+          <div className=' row center-align card-header'>
             <h3>{this.props.movie.Title}</h3>
           </div>
           {/* OUTER CARD CONTENT START*/}
 
           <div className='row outerDiv'>
-            <div className='col l6 m6 s12 image-placeholder center-align'>
+            <div className='col l6 m6 s12 modal-image-placeholder center-align'>
               <img src={this.props.movie.Poster} />
             </div>
             <div className='col l6 m6 s12 '>
@@ -83,7 +83,7 @@ class Modal1 extends Component {
                   </tr>
                 </tbody>
               </table>
-              <span className=' activator waves-effect waves-light btn-large center-align commend'>Plot</span>
+              <span className=' activator waves-effect waves-light btn-large center-align wide-btn'>Plot</span>
             </div>
           </div>
 
