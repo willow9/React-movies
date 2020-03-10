@@ -83,17 +83,17 @@ class Modal1 extends Component {
                   </tr>
                 </tbody>
               </table>
-              <span className=' activator waves-effect waves-light btn-large center-align wide-btn'>Plot</span>
+              <span className='activator waves-effect waves-light btn-large center-align wide-btn'>Plot</span>
             </div>
           </div>
 
           {/* INACTIVE CARD CONTENT */}
           <div className='card-reveal'>
-            <div className='col m12 l12 s12'>
+            <div className='col m12 l12 s12 revealed'>
               <span className='card-title grey-text text-darken-4'>
                 Plot<i className='material-icons right'>close</i>
               </span>
-              <p className='plot-text center-align'>{this.props.movie.Plot}</p>
+              <p className='center-align'>{this.props.movie.Plot}</p>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchMovie: imdbId => dispatch(fetchMovie(imdbId)),
     addMovieToDB: movie => dispatch(addMovieToDB(movie)),
-    addMovieToUserCollection: (userUID,imdbId) => dispatch(addMovieToUserCollection(userUID, imdbId))
+    addMovieToUserCollection: (userUID, imdbId) => dispatch(addMovieToUserCollection(userUID, imdbId))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Modal1);
