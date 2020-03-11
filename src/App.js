@@ -13,7 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Dashboard}></Route>
+          <Route path='/' component={Dashboard}></Route>
           <Route exact path='/users/:id' component={UserProfile} />
           <Route exaxt path='/signup' component={SignUp} />
           <Route exaxt path='/signin' component={SignIn} />
