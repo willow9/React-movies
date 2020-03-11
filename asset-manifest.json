@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/React-movies/static/css/main.d083399a.chunk.css",
+    "main.js": "/React-movies/static/js/main.2682f58a.chunk.js",
+    "main.js.map": "/React-movies/static/js/main.2682f58a.chunk.js.map",
+    "runtime-main.js": "/React-movies/static/js/runtime-main.ff2e83f5.js",
+    "runtime-main.js.map": "/React-movies/static/js/runtime-main.ff2e83f5.js.map",
+    "static/js/2.695b053a.chunk.js": "/React-movies/static/js/2.695b053a.chunk.js",
+    "static/js/2.695b053a.chunk.js.map": "/React-movies/static/js/2.695b053a.chunk.js.map",
+    "index.html": "/React-movies/index.html",
+    "precache-manifest.de437f3bba3b310654eeb3933f24d778.js": "/React-movies/precache-manifest.de437f3bba3b310654eeb3933f24d778.js",
+    "service-worker.js": "/React-movies/service-worker.js",
+    "static/css/main.d083399a.chunk.css.map": "/React-movies/static/css/main.d083399a.chunk.css.map",
+    "static/js/2.695b053a.chunk.js.LICENSE.txt": "/React-movies/static/js/2.695b053a.chunk.js.LICENSE.txt",
+    "static/media/animals.jpg": "/React-movies/static/media/animals.36e49f7f.jpg",
+    "static/media/noPicture.jpg": "/React-movies/static/media/noPicture.7ee3931e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff2e83f5.js",
+    "static/js/2.695b053a.chunk.js",
+    "static/css/main.d083399a.chunk.css",
+    "static/js/main.2682f58a.chunk.js"
+  ]
+}
