@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { APIKey } from '../../APIKey';
+import 'dotenv/config.js';
 
 export const fetchMovies = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -21,7 +21,7 @@ export const fetchMovies = () => {
 
 export const fetchMovie = imdbId => dispatch => {
   axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbId}&plot=full`)
+    .get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&i=${imdbId}&plot=full`)
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIE',
@@ -33,7 +33,7 @@ export const fetchMovie = imdbId => dispatch => {
 
 export const searchMovies = title => dispatch => {
   axios
-    .get(`http://www.omdbapi.com/?apikey=${APIKey}&s=${title}`)
+    .get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&s=${title}`)
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIES',
