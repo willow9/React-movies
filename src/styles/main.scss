@@ -9,7 +9,7 @@ body {
   background-color: #e6f0f0;
 }
 
-//Overwriting default styles of default elements and Materialize classes
+//Overwriting default styles of elements and Materialize classes
 
 nav {
   position: sticky;
@@ -41,6 +41,15 @@ nav {
         margin-left: auto;
         margin-right: auto;
         width: 50%;
+      }
+    }
+  }
+  .userWrapper {
+    height: unset;
+    .user {
+      img {
+        max-height: 350px;
+        max-width: 200px;
       }
     }
   }
@@ -91,6 +100,25 @@ nav {
       font-size: 16px;
       color: aliceblue;
     }
+  }
+}
+.userProfileWrapper {
+  height: 100vh;
+  background-color: $dark-green;
+  position: sticky;
+  top: 64px;
+
+  .userProfile {
+    position: relative;
+    display: block;
+  }
+  img {
+    margin: 10px auto;
+    display: block;
+  }
+  h4 {
+    color: white;
+    font-variant: small-caps
   }
 }
 
