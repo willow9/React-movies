@@ -3,7 +3,7 @@ import picture from '../images/animals.jpg';
 
 const UserProfile = ({ user }) => {
   return (
-    <div className='col s12 m2 l2 green'>
+    <div className='col s12 m4 l4 green'>
       <div className='valign-wrapper'>
         <div className='card large'>
           <div className='card-image circle'>

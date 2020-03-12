@@ -8,7 +8,7 @@ class Dashboard extends Component {
     return <div className='row'>
      <Users />
      <SearchBar/>
-     <UserMovies/>
+     <UserMovies containerSize = "dashboard"/>
     </div>
   }
 }
