@@ -11,7 +11,7 @@ class UserMovies extends Component {
     imdbId: ''
   };
   componentWillMount() {
-    if (!this.props.title) {
+    if (!this.props.isUserMovies) {
       this.props.fetchMovies();
     } else {
       this.props.fetchUserMovies(this.props.userId);
@@ -41,7 +41,7 @@ class UserMovies extends Component {
           </Portal>
         ) : null}
         <div className={this.setContainerSize('outerDiv')}>
-          {this.props.title && <h3 className='center'>Favorite Movies</h3>}
+          {this.props.isUserMovies && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
             {this.props.movies.length > 0 ? (
               this.props.movies.map((el, index) => {
@@ -69,7 +69,7 @@ class UserMovies extends Component {
                 );
               })
             ) : (
-              <h3 className='center'>No movies found</h3>
+              <h6 className='center'>No movies found</h6>
             )}
           </div>
         </div>

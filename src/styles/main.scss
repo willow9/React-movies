@@ -26,34 +26,7 @@ nav {
     background-color: unset;
   }
 }
-@media (min-width: 600px) {
-  .card-image {
-    img {
-      height: 20.75rem;
-    }
-  }
-}
 
-@media (max-width: 600px) {
-  .card {
-    .card-image {
-      img {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-      }
-    }
-  }
-  .userWrapper {
-    height: unset;
-    .user {
-      img {
-        max-height: 350px;
-        max-width: 200px;
-      }
-    }
-  }
-}
 .card {
   max-width: 700px;
   .card-content {
@@ -68,12 +41,6 @@ nav {
 #portal {
   position: relative;
   z-index: 9999;
-}
-@media (max-width: 600px) {
-  .revealed {
-    position: fixed;
-    top: 25%;
-  }
 }
 
 .modal-background {
@@ -118,7 +85,7 @@ nav {
   }
   h4 {
     color: white;
-    font-variant: small-caps
+    font-variant: small-caps;
   }
 }
 
@@ -170,5 +137,38 @@ nav {
     &:hover {
       font-size: 18px;
     }
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    .card-image {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+    }
+  }
+  .userProfileWrapper {
+    height: auto;
+    .userProfile {
+      img {
+        max-height: 350px;
+        max-width: 200px;
+      }
+    }
+  }
+}
+@media (min-width: 600px) {
+  .card-image {
+    img {
+      height: 20.75rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .revealed {
+    position: fixed;
+    top: 25%;
   }
 }
