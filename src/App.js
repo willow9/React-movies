@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UserProfile from './pages/User';
 import Dashboard from './pages/Dashboard';
@@ -13,7 +13,7 @@ class App extends Component {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path='/' component={Dashboard}></Route>
+          <Route exact path='/' component={Dashboard}></Route>
           <Route exact path='/users/:id' component={UserProfile} />
           <Route exaxt path='/signup' component={SignUp} />
           <Route exaxt path='/signin' component={SignIn} />
