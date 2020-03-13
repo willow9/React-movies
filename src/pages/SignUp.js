@@ -10,7 +10,9 @@ export class SignUp extends Component {
     email: '',
     password: ''
   };
-
+  invokeInput = () => {
+    document.getElementById('imgInput').click();
+  };
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
@@ -28,51 +30,69 @@ export class SignUp extends Component {
     return (
       <div className='container'>
         <form onSubmit={this.handleSubmit}>
-          <div className='input-field '>
-            <input
-              onChange={this.handleChange}
-              placeholder='First Name'
-              id='firstName'
-              type='text'
-              className='validate'
-            ></input>
-          </div>
           <div className='row'>
-            <div className='input-field '>
-              <input
-                onChange={this.handleChange}
-                placeholder='Last Name'
-                id='lastName'
-                type='text'
-                className='validate'
-              ></input>
-            </div>
-          </div>
+            <div className='col s12 m6 l6'>
+              <div className='input-field '>
+                <input
+                  onChange={this.handleChange}
+                  placeholder='First Name'
+                  id='firstName'
+                  type='text'
+                  className='validate'
+                ></input>
+              </div>
+              <div className='input-field '>
+                <input
+                  onChange={this.handleChange}
+                  placeholder='Last Name'
+                  id='lastName'
+                  type='text'
+                  className='validate'
+                ></input>
+              </div>
 
-          <div className='row'>
-            <div className='input-field '>
-              <input
-                onChange={this.handleChange}
-                placeholder='Email'
-                id='email'
-                type='email'
-                className='validate'
-              ></input>
+              <div className='input-field '>
+                <input
+                  onChange={this.handleChange}
+                  placeholder='Email'
+                  id='email'
+                  type='email'
+                  className='validate'
+                ></input>
+              </div>
+
+              <div className='input-field '>
+                <input
+                  onChange={this.handleChange}
+                  placeholder='Password'
+                  id='password'
+                  type='password'
+                  className='validate'
+                ></input>
+              </div>
+            </div>
+            <div className='col s12 m6 l6'>
+              <div
+                className='base-image-input'
+                //  style={{ 'background-image': `url(${imageData})` }}
+                onClick={this.invokeInput}
+              >
+                {1 == 1 ? (
+                  <span
+                    // v-if="!imageData"
+                    className='placeholder'
+                  >
+                    Choose an Image
+                  </span>
+                ) : null}
+                <input className='file-input' id='imgInput' type='file' />
+              </div>
             </div>
           </div>
-          <div className='row'>
-            <div className='input-field '>
-              <input
-                onChange={this.handleChange}
-                placeholder='Password'
-                id='password'
-                type='password'
-                className='validate'
-              ></input>
-            </div>
+          <div className='row center-align'>
+            <button className='btn pink lighten-1 z-depth-0'>Sign Up</button>
+            <div className='red-text center'>{errMsg ? <p> {errMsg}</p> : null}</div>
           </div>
-          <button className='btn pink lighten-1 z-depth-0'>Sign Up</button>
-          <div className='red-text center'>{errMsg ? <p> {errMsg}</p> : null}</div>
         </form>
       </div>
     );
