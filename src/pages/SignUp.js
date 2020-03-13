@@ -8,10 +8,12 @@ export class SignUp extends Component {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    image: null,
+    rawImage: null
   };
-  invokeInput = () => {
-    document.getElementById('imgInput').click();
+  invokeImgInput = () => {
+    this.imgInput.click();
   };
   handleChange = e => {
     this.setState({
@@ -21,8 +23,17 @@ export class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.props);
     this.props.signUp(this.state);
+  };
+
+  onSelectImage = e => {
+    let files = e.target.files[0];
+    let reader = new FileReader();
+    reader.onload = e => {
+      this.setState({ image: e.target.result });
+    };
+    reader.readAsDataURL(files);
+    this.setState({ rawImage: files });
   };
   render() {
     const { auth, errMsg } = this.props;
@@ -74,18 +85,19 @@ export class SignUp extends Component {
             <div className='col s12 m6 l6'>
               <div
                 className='base-image-input'
-                //  style={{ 'background-image': `url(${imageData})` }}
-                onClick={this.invokeInput}
+                style={{ backgroundImage: `url(${this.state.image})` }}
+                onClick={this.invokeImgInput}
               >
-                {1 == 1 ? (
-                  <span
-                    // v-if="!imageData"
-                    className='placeholder'
-                  >
-                    Choose an Image
-                  </span>
-                ) : null}
-                <input className='file-input' id='imgInput' type='file' />
+                {!this.state.image ? <span className='placeholder'>Choose an Image</span> : null}
+                <input
+                  className='file-input'
+                  id='imgInput'
+                  ref={imgInput => {
+                    this.imgInput = imgInput;
+                  }}
+                  type='file'
+                  onChange={this.onSelectImage}
+                />
               </div>
             </div>
           </div>
