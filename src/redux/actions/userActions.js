@@ -1,4 +1,3 @@
-
 export const signIn = credentials => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
@@ -85,6 +84,28 @@ export const addMovieToUserCollection = (userUID, imdbId) => {
       .update({ movies: firebase.firestore.FieldValue.arrayUnion(imdbId) })
       .catch(err => {
         console.log(err);
+      });
+  };
+};
+
+export const addImage = rawImage => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const file = rawImage;
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    const storage = firebase.storage();
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword('new22299User.email@mail.com', 'newUser.password')
+      .then(response => {
+        return storage.ref(response.user.uid).put(file);
+      })
+      .then(snapshot => {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then(url => {
+        console.log(url);
       });
   };
 };

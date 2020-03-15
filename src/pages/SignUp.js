@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signUp } from '../redux';
+import { signUp, addImage } from '../redux';
 import { Redirect } from 'react-router-dom';
 
 export class SignUp extends Component {
@@ -23,7 +23,8 @@ export class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.signUp(this.state);
+    // this.props.signUp(this.state);
+    this.props.addImage(this.state.rawImage)
   };
 
   onSelectImage = e => {
@@ -118,7 +119,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    signUp: newUser => dispatch(signUp(newUser))
+    signUp: newUser => dispatch(signUp(newUser)),
+    addImage: rowImage => dispatch(addImage(rowImage))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
