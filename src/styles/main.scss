@@ -69,19 +69,20 @@ nav {
     }
   }
 }
-.userProfileWrapper {
+.user-profile-wrapper {
   height: 100vh;
   background-color: $dark-green;
   position: sticky;
   top: 64px;
 
-  .userProfile {
+  .user-profile {
     position: relative;
     display: block;
   }
   img {
     margin: 10px auto;
     display: block;
+    max-width: 100%;
   }
   h4 {
     color: white;
@@ -178,9 +179,10 @@ nav {
       }
     }
   }
-  .userProfileWrapper {
+  .user-profile-wrapper {
     height: auto;
-    .userProfile {
+    position: unset;
+    .user-profile {
       img {
         max-height: 350px;
         max-width: 200px;

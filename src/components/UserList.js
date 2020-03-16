@@ -13,13 +13,17 @@ class Users extends Component {
     return (
       <>
         <div className='user-list-col col s12 m2 l2 hide-on-small-only'>
-         
           <ul className='collection users-collection'>
             {this.props.users &&
               this.props.users.map(el => {
                 return (
                   <li className='collection-item avatar valign-wrapper' key={el.id}>
-                    <i className='material-icons circle '>avatar</i>
+                    {el.photoUrl ?(
+                      <img src={el.photoUrl} alt='' className='circle'></img>
+                    ) : (
+                      <i className='material-icons circle '>avatar</i>
+                    )}
+
                     <Link to={`/users/${el.id}`}>
                       <span className=' valign-wrapper user-name-in-list'>
                         {el.firstName} {el.lastName}
@@ -29,9 +33,8 @@ class Users extends Component {
                 );
               })}
           </ul>
-
         </div>
-    </>
+      </>
     );
   }
 }
