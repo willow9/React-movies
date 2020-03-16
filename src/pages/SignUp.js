@@ -24,7 +24,7 @@ export class SignUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     // this.props.signUp(this.state);
-    this.props.addImage(this.state.rawImage)
+    this.props.addImage(this.state);
   };
 
   onSelectImage = e => {
@@ -50,27 +50,15 @@ export class SignUp extends Component {
                   placeholder='First Name'
                   id='firstName'
                   type='text'
-                  className='validate'
+                  required
                 ></input>
               </div>
               <div className='input-field '>
-                <input
-                  onChange={this.handleChange}
-                  placeholder='Last Name'
-                  id='lastName'
-                  type='text'
-                  className='validate'
-                ></input>
+                <input onChange={this.handleChange} placeholder='Last Name' id='lastName' type='text' required></input>
               </div>
 
               <div className='input-field '>
-                <input
-                  onChange={this.handleChange}
-                  placeholder='Email'
-                  id='email'
-                  type='email'
-                  className='validate'
-                ></input>
+                <input onChange={this.handleChange} placeholder='Email' id='email' type='email' required></input>
               </div>
 
               <div className='input-field '>
@@ -79,7 +67,7 @@ export class SignUp extends Component {
                   placeholder='Password'
                   id='password'
                   type='password'
-                  className='validate'
+                  required
                 ></input>
               </div>
             </div>

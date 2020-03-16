@@ -88,24 +88,40 @@ export const addMovieToUserCollection = (userUID, imdbId) => {
   };
 };
 
-export const addImage = rawImage => {
+export const addImage = newUser => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    const file = rawImage;
+    const file = newUser.rawImage;
     const firestore = getFirestore();
     const firebase = getFirebase();
     const storage = firebase.storage();
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword('new22299User.email@mail.com', 'newUser.password')
+      .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then(response => {
-        return storage.ref(response.user.uid).put(file);
+        firestore
+          .collection('users')
+          .doc(response.user.uid)
+          .set({
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            initials: newUser.firstName[0] + newUser.lastName[0]
+          });
+        if (newUser.rawImage) {
+          return storage
+            .ref('avatars/' + response.user.uid)
+            .put(file)
+            .then(snapshot => {
+              return snapshot.ref.getDownloadURL();
+            })
+            .then(url => {
+              firestore
+                .collection('users')
+                .doc(firebase.auth().currentUser.uid)
+                .update({ photoUrl: url });
+            });
+        }
       })
-      .then(snapshot => {
-        return snapshot.ref.getDownloadURL();
-      })
-      .then(url => {
-        console.log(url);
-      });
+      .catch(err => dispatch({ type: 'SIGNUP_ERROR', err })); //if fails on creating user
   };
 };
