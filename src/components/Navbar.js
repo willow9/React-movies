@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
+import TestUserList from './TestUserList';
+import UserList from './UserList';
 //   import M from 'materialize-css/dist/js/materialize.min.js';
 //  import M from 'materialize-sass/materialize.min.js'
 
@@ -33,8 +35,12 @@ const Navbar = ({ auth }) => {
 
         {/* Navbar links for small screeens only */}
         <div class='sidenav sidenav-close' id='mobile'>
-          <ul>{links}
-          
+          <ul>{links}</ul>
+          <ul>
+            <li>
+            <li class="collection-header center"><h4>Users</h4></li>
+              <TestUserList />
+            </li>
           </ul>
         </div>
         {/* End */}
