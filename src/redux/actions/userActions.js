@@ -124,8 +124,29 @@ export const signUp = newUser => {
       })
       .then(() => {
         dispatch({ type: 'SIGNUP_SUCCESS' });
-        console.log("sign up success")
+        console.log('sign up success');
       })
       .catch(err => dispatch({ type: 'SIGNUP_ERROR', err })); //if fails on creating user
+  };
+};
+
+export const findUser = userId => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection('users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          console.log('Document data:', doc.data());
+          dispatch({ type: 'FETCH_USER_SUCCESS', user: doc.data() });
+        } else {
+          dispatch({ type: 'FETCH_USER_ERROR', payload: 'No such user' });
+        }
+      })
+      .catch(err => {
+        dispatch({ type: 'FETCH_USER_ERROR', payload: err.message });
+      });
   };
 };

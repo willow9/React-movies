@@ -43,7 +43,7 @@ class UserMovies extends Component {
         <div className={this.setContainerSize('outerDiv')}>
           {this.props.isUserMovies && <h3 className='center'>Favorite Movies</h3>}
           <div className='row'>
-            {this.props.movies.length > 0 ? (
+            {this.props.movies ? (
               this.props.movies.map((el, index) => {
                 return (
                   <div className={this.setContainerSize('cardDiv')} key={index}>
@@ -69,7 +69,7 @@ class UserMovies extends Component {
                 );
               })
             ) : (
-              <h6 className='center'>No movies found</h6>
+              <h6 className='center'>No movies found.</h6>
             )}
           </div>
         </div>

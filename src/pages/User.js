@@ -1,27 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import UserProfile from '../components/UserProfile';
 import UserMovies from '../components/UserMovies';
 
 const User = props => {
   let id = props.match.params.id;
-  let user = props.users.find(el => {
-    return el.id.toString() === id;
-  });
 
   return (
     <div>
       <div className='row'>
-        <UserProfile user={user}></UserProfile>
-        <UserMovies isUserMovies = {true} userId = {id}/>
+        <UserProfile userId={id}></UserProfile>
+        <UserMovies isUserMovies={true} userId={id} />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    users: state.userReducer.users
-  };
-};
-export default connect(mapStateToProps)(User);
+export default User;
