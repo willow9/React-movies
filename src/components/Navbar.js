@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-import TestUserList from './TestUserList';
-import UserList from './UserList';
-//   import M from 'materialize-css/dist/js/materialize.min.js';
-//  import M from 'materialize-sass/materialize.min.js'
 
 const Navbar = ({ auth }) => {
   useEffect(() => {
@@ -19,7 +15,7 @@ const Navbar = ({ auth }) => {
 
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
-    <nav className='nav-wrapper #927b7c'>
+    <nav className='nav-wrapper'>
       <div className='container'>
         <i href='#' data-target='mobile' className='sidenav-trigger hide-on-med-and-up'>
           <i className='material-icons'>menu</i>
@@ -38,8 +34,7 @@ const Navbar = ({ auth }) => {
           <ul>{links}</ul>
           <ul>
             <li>
-            <li class="collection-header center"><h4>Users</h4></li>
-              <TestUserList />
+              <NavLink to='/user-list'>Users</NavLink>
             </li>
           </ul>
         </div>

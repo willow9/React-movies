@@ -7,18 +7,19 @@ class Users extends Component {
   componentWillMount() {
     this.props.fetch();
   }
+  setVisibility = () => {
+    return this.props.visibility === 'dashboard' ? 'user-list-col col m2 l2 hide-on-small-only ' : 'user-list-col';
+  };
   render() {
-    // console.log(this.props);
-
     return (
       <>
-        <div className='user-list-col col s12 m2 l2 hide-on-small-only'>
+        <div className={this.setVisibility()}>
           <ul className='collection users-collection'>
             {this.props.users &&
               this.props.users.map(el => {
                 return (
                   <li className='collection-item avatar valign-wrapper' key={el.id}>
-                    {el.photoUrl ?(
+                    {el.photoUrl ? (
                       <img src={el.photoUrl} alt='' className='circle'></img>
                     ) : (
                       <i className='material-icons circle '>avatar</i>

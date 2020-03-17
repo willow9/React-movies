@@ -24,8 +24,8 @@ class UserMovies extends Component {
     this.setState({ imdbId: e.target.id });
     this.setState({ isOpen: !this.state.isOpen });
   };
-  setContainerSize = div => {
-    if (div === 'outerDiv') {
+  setContainerSize = divSize => {
+    if (divSize === 'outerDiv') {
       return this.props.containerSize === 'dashboard' ? 'col s12 m10 l10 ' : 'col s12 m8 l8';
     } else {
       return this.props.containerSize === 'dashboard' ? 'col s12 m3 l2 ' : 'col s12 m4 l3';

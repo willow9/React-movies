@@ -59,8 +59,9 @@ nav {
   position: sticky;
   top: 72px;
   margin-top: -20px;
-  height: 100vh;
+  height: 120vh;
   background-color: $dark-green;
+
   .users-collection {
     background-color: unset;
     .user-name-in-list {
