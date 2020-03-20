@@ -1,65 +1,89 @@
 import React, { Component } from 'react';
-import picture from '../images/noPicture.jpg';
 import { connect } from 'react-redux';
+import picture from '../images/noPicture.jpg';
 import { fetchMovies, fetchUserMovies, searchMovies } from '../redux';
-import Modal1 from '../components/Modal';
-import Portal from '../components/Portal';
+import Modal1 from './Modal';
+import Portal from './Portal';
 
 class UserMovies extends Component {
   state = {
     isOpen: false,
     imdbId: ''
   };
+
   componentWillMount() {
-    if (!this.props.isUserMovies) {
-      this.props.fetchMovies();
+    const {
+      fetchAllMovies,
+      fetchOnlyUserMovies,
+      userId,
+      isUserMovies
+    } = this.props;
+    if (!isUserMovies) {
+      fetchAllMovies();
     } else {
-      this.props.fetchUserMovies(this.props.userId);
+      fetchOnlyUserMovies(userId);
     }
   }
+
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+
   selectMovie = e => {
     this.setState({ imdbId: e.target.id });
     this.setState({ isOpen: !this.state.isOpen });
   };
+
   setContainerSize = divSize => {
+    const { containerSize } = this.props;
     if (divSize === 'outerDiv') {
-      return this.props.containerSize === 'dashboard' ? 'col s12 m10 l10 ' : 'col s12 m8 l8';
-    } else {
-      return this.props.containerSize === 'dashboard' ? 'col s12 m3 l2 ' : 'col s12 m4 l3';
+      return containerSize === 'dashboard'
+        ? 'col s12 m10 l10 '
+        : 'col s12 m8 l8';
     }
+    return containerSize === 'dashboard' ? 'col s12 m3 l2 ' : 'col s12 m4 l3';
   };
 
   render() {
+    const { imdbId, isOpen } = this.state;
+    const { isUserMovies, movies } = this.props;
     return (
       <div>
-        {this.state.isOpen ? (
+        {isOpen ? (
           <Portal>
-            <Modal1 imdbId={this.state.imdbId} toggle={this.toggle.bind(this)}></Modal1>
+            <Modal1 imdbId={imdbId} toggle={this.toggle.bind(this)} />
           </Portal>
         ) : null}
         <div className={this.setContainerSize('outerDiv')}>
-          {this.props.isUserMovies && <h3 className='center'>Favorite Movies</h3>}
-          <div className='row'>
-            {this.props.movies ? (
-              this.props.movies.map((el, index) => {
+          {isUserMovies && <h3 className="center">Favorite Movies</h3>}
+          <div className="row">
+            {movies ? (
+              movies.map((el, index) => {
                 return (
                   <div className={this.setContainerSize('cardDiv')} key={index}>
-                    <div className='card '>
-                      <div className='card-image'>
-                        <img src={el.Poster !== 'N/A' ? el.Poster : picture} alt='' />
+                    <div className="card ">
+                      <div className="card-image">
+                        <img
+                          src={el.Poster !== 'N/A' ? el.Poster : picture}
+                          alt=""
+                        />
                       </div>
-                      <div className='card-content'>
+                      <div className="card-content">
                         <h6>{el.Title}</h6>
                         <hr />
-                        <p>IMDB ID: {el.imdbID}</p>
-                        <p>{el.Year} year</p>
+                        <p>
+                          IMDB ID:
+                          {el.imdbID}
+                        </p>
+                        <p>{el.Year}</p>
+                        <p>
+                          {el.Year}
+                          year
+                        </p>
                       </div>
                       <button
                         onClick={this.selectMovie}
-                        className='btn waves-effect waves-light wide-btn'
+                        className="btn waves-effect waves-light wide-btn"
                         id={el.imdbID}
                       >
                         more info
@@ -69,7 +93,7 @@ class UserMovies extends Component {
                 );
               })
             ) : (
-              <h6 className='center'>No movies found.</h6>
+              <h6 className="center">No movies found.</h6>
             )}
           </div>
         </div>
@@ -85,9 +109,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovies: () => dispatch(fetchMovies()),
-    fetchUserMovies: userId => dispatch(fetchUserMovies(userId)),
-    searchMovies: title => dispatch(searchMovies(title))
+    fetchAllMovies: () => dispatch(fetchMovies()),
+    fetchOnlyUserMovies: userId => dispatch(fetchUserMovies(userId)),
+    findMovies: title => dispatch(searchMovies(title))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserMovies);

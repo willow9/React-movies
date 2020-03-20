@@ -5,29 +5,40 @@ import { fetchUsers } from '../redux';
 
 class Users extends Component {
   componentWillMount() {
-    this.props.fetch();
+    const { fetch } = this.props;
+    fetch();
   }
+
   setVisibility = () => {
-    return this.props.visibility === 'dashboard' ? 'user-list-col col m2 l2 hide-on-small-only ' : 'user-list-col';
+    const { visibility } = this.props;
+    return visibility === 'dashboard'
+      ? 'user-list-col col m2 l2 hide-on-small-only '
+      : 'user-list-col';
   };
+
   render() {
+    const { users } = this.props;
     return (
       <>
         <div className={this.setVisibility()}>
-          <ul className='collection users-collection'>
-            {this.props.users &&
-              this.props.users.map(el => {
+          <ul className="collection users-collection">
+            {users &&
+              users.map(el => {
                 return (
-                  <li className='collection-item avatar valign-wrapper' key={el.id}>
+                  <li
+                    className="collection-item avatar valign-wrapper"
+                    key={el.id}
+                  >
                     {el.photoUrl ? (
-                      <img src={el.photoUrl} alt='' className='circle'></img>
+                      <img src={el.photoUrl} alt="" className="circle" />
                     ) : (
-                      <i className='material-icons circle '>avatar</i>
+                      <i className="material-icons circle ">avatar</i>
                     )}
 
                     <Link to={`/users/${el.id}`}>
-                      <span className=' valign-wrapper user-name-in-list'>
-                        {el.firstName} {el.lastName}
+                      <span className=" valign-wrapper user-name-in-list">
+                        {el.firstName}
+                        {el.lastName}
                       </span>
                     </Link>
                   </li>

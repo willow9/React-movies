@@ -9,7 +9,7 @@ export const fetchMovies = () => {
       .collection('movies')
       .get()
       .then(querySnapshot => {
-        let movies = [];
+        const movies = [];
         querySnapshot.forEach(doc => {
           movies.push(doc.data());
         });
@@ -21,7 +21,9 @@ export const fetchMovies = () => {
 
 export const fetchMovie = imdbId => dispatch => {
   axios
-    .get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&i=${imdbId}&plot=full`)
+    .get(
+      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&i=${imdbId}&plot=full`
+    )
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIE',
@@ -33,7 +35,9 @@ export const fetchMovie = imdbId => dispatch => {
 
 export const searchMovies = title => dispatch => {
   axios
-    .get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&s=${title}`)
+    .get(
+      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OIMDB_API_KEY}&s=${title}`
+    )
     .then(res => {
       dispatch({
         type: 'FETCH_MOVIES',
@@ -72,7 +76,7 @@ export const fetchUserMovies = userId => {
               .where('imdbID', 'in', [...doc.data().movies])
               .get()
               .then(querySnapshot => {
-                let movies = [];
+                const movies = [];
                 querySnapshot.forEach(doc => {
                   // console.log(doc.id, ' => ', doc.data());
 

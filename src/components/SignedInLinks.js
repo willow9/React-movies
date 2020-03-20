@@ -3,37 +3,33 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, fetchMovies } from '../redux';
 
-const SignedInLinks = props => {
-  const signOut = () => {
-    props.signOut();
-    props.reloadMovies()
+const SignedInLinks = ({ user, logOut, reloadMovies }) => {
+  const userSignOut = () => {
+    logOut();
+    reloadMovies();
   };
-  
+
   return (
     <>
       <li>
-        <NavLink to='/' onClick={signOut}>
+        <NavLink to="/" onClick={userSignOut}>
           Sign Out
         </NavLink>
       </li>
       <li>
-        <NavLink to='/' >
-          {props.user.initials}
-        </NavLink>{' '}
+        <NavLink to="/">{user.initials}</NavLink>
       </li>
     </>
   );
 };
 const mapStateToProps = state => {
-  // console.log(state);
-
   return {
     user: state.firebase.profile
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut()),
+    logOut: () => dispatch(signOut()),
     reloadMovies: () => dispatch(fetchMovies())
   };
 };

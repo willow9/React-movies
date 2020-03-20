@@ -6,35 +6,40 @@ import SignedOutLinks from './SignedOutLinks';
 
 const Navbar = ({ auth }) => {
   useEffect(() => {
-    var elems = document.querySelectorAll('.sidenav');
-    var instance = window.M.Sidenav.init(elems, {
+    const elems = document.querySelectorAll('.sidenav');
+    const instance = window.M.Sidenav.init(elems, {
       edge: 'left',
       inDuration: 250
     });
   }, []);
+  const someWord = 'hello';
 
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (
-    <nav className='nav-wrapper'>
-      <div className='container'>
-        <i href='#' data-target='mobile' className='sidenav-trigger hide-on-med-and-up'>
-          <i className='material-icons'>menu</i>
+    <nav className="nav-wrapper">
+      <div className="container">
+        <i
+          href="#"
+          data-target="mobile"
+          className="sidenav-trigger hide-on-med-and-up"
+        >
+          <i className="material-icons">menu</i>
         </i>
-        <Link to='/' className='brand-logo'>
+        <Link to="/" className="brand-logo">
           WTW
         </Link>
         {/* Navbar links for large and medium screens only */}
-        <div className='hide-on-small-only '>
-          <ul className='right'>{links}</ul>
+        <div className="hide-on-small-only ">
+          <ul className="right">{links}</ul>
         </div>
         {/* End */}
 
         {/* Navbar links for small screeens only */}
-        <div class='sidenav sidenav-close' id='mobile'>
+        <div className="sidenav sidenav-close" id="mobile">
           <ul>{links}</ul>
           <ul>
             <li>
-              <NavLink to='/user-list'>Users</NavLink>
+              <NavLink to="/user-list">Users</NavLink>
             </li>
           </ul>
         </div>
