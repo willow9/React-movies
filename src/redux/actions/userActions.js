@@ -109,7 +109,7 @@ export const signUp = newUser => {
           });
         if (newUser.rawImage) {
           return storage
-            .ref('avatars/' + response.user.uid)
+            .ref(`avatars/${response.user.uid}`)
             .put(file)
             .then(snapshot => {
               return snapshot.ref.getDownloadURL();
@@ -126,7 +126,7 @@ export const signUp = newUser => {
         dispatch({ type: 'SIGNUP_SUCCESS' });
         console.log('sign up success');
       })
-      .catch(err => dispatch({ type: 'SIGNUP_ERROR', err })); //if fails on creating user
+      .catch(err => dispatch({ type: 'SIGNUP_ERROR', err })); // if fails on creating user
   };
 };
 

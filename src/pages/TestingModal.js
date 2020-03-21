@@ -1,8 +1,8 @@
 import React, { useEffect, Component } from 'react';
-import picture from '../images/logo512.png';
 import { connect } from 'react-redux';
-import { fetchMovies, searchMovies } from '../redux';
 import Modal from 'react-modal';
+import picture from '../images/logo512.png';
+import { fetchMovies, searchMovies } from '../redux';
 import Portal from '../components/Portal';
 
 class UserMovies1 extends Component {
@@ -10,51 +10,55 @@ class UserMovies1 extends Component {
   //   useEffect(() => {
   //     fetchMovies();
   //   }, [fetchMovies]);
-//   const { fetchMovies, movies, title } = this.props;
-state = {
+  //   const { fetchMovies, movies, title } = this.props;
+  state = {
     isOpen: false
-}
+  };
+
   componentWillMount() {
-    this.props.fetchMovies()
+    this.props.fetchMovies();
   }
-   toggle  = () =>{
-    this.setState({isOpen:!this.state.isOpen})
-   }
+
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
   render() {
-   
     return (
       <div>
-        <Modal isOpen={this.state.isOpen}>{ (this.props.movies[0].Title)} 
-        <div> Hello</div>
-        <button onClick = {this.toggle}>Toggle</button>
+        <Modal isOpen={this.state.isOpen}>
+          {this.props.movies[0].Title}
+          <div> Hello</div>
+          <button onClick={this.toggle}>Toggle</button>
         </Modal>
         <Portal>Hello from portal</Portal>
-        <button onClick = {this.toggle}>Toggle Modal</button>
-        <div className='col s12 m8 l8 '>
-          {this.props.title && <h3 className='center'>Favorite Movies</h3>}
-          <div className='row'>
+        <button onClick={this.toggle}>Toggle Modal</button>
+        <div className="col s12 m8 l8 ">
+          {this.props.title && <h3 className="center">Favorite Movies</h3>}
+          <div className="row">
             {this.props.movies ? (
               this.props.movies.map((el, index) => {
                 return (
-                  <div className='col s12 m6 l3' key={index}>
-                    <div className='card '>
-                      <div className='card-image'>
+                  <div className="col s12 m6 l3" key={index}>
+                    <div className="card ">
+                      <div className="card-image">
                         <img src={el.Poster} alt={picture} />
                       </div>
-                      <div className='card-content'>
+                      <div className="card-content">
                         <h6>{el.Title}</h6>
                         <hr />
                         <p>IMDB ID: {el.imdbID}</p>
                         <p>{el.Year} year</p>
                       </div>
-                      <button className='btn waves-effect waves-light commend'>Commend</button>
+                      <button className="btn waves-effect waves-light commend">
+                        Commend
+                      </button>
                     </div>
                   </div>
                 );
               })
             ) : (
-              <h3 className='center'>No movies found</h3>
+              <h3 className="center">No movies found</h3>
             )}
           </div>
         </div>

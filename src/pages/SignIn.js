@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../redux';
 import { Redirect } from 'react-router-dom';
+import { signIn } from '../redux';
 
 export class SignIn extends Component {
-  state = {
-    email: '',
-    password: ''
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
 
   handleChange = e => {
     this.setState({
@@ -16,39 +20,44 @@ export class SignIn extends Component {
   };
 
   handleSubmit = e => {
+    const { signInUser } = this.props;
     e.preventDefault();
     // console.log(this.props);
-    this.props.signIn(this.state);
+    signInUser(this.state);
   };
+
   render() {
-    if (this.props.auth.uid) return <Redirect to='/' />;
+    const { auth, errMsg } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
-      <div className='container'>
+      <div className="container">
         <form onSubmit={this.handleSubmit}>
-          <div className='row'>
-            <div className='input-field '>
+          <div className="row">
+            <div className="input-field ">
               <input
                 onChange={this.handleChange}
-                placeholder='Email'
-                id='email'
-                type='email'
-                className='validate'
-              ></input>
+                placeholder="Email"
+                id="email"
+                type="email"
+                className="validate"
+              />
             </div>
           </div>
-          <div className='row'>
-            <div className='input-field '>
+          <div className="row">
+            <div className="input-field ">
               <input
                 onChange={this.handleChange}
-                placeholder='Password'
-                id='password'
-                type='password'
-                className='validate'
-              ></input>
+                placeholder="Password"
+                id="password"
+                type="password"
+                className="validate"
+              />
             </div>
           </div>
-          <button className='btn pink lighten-1 z-depth-0'>Sign In</button>
-          <div className='red-text center'>{this.props.errMsg ? <p> {this.props.errMsg}</p> : null}</div>
+          <button className="btn pink lighten-1 z-depth-0">Sign In</button>
+          <div className="red-text center">
+            {errMsg ? <p>{errMsg}</p> : null}
+          </div>
         </form>
       </div>
     );
@@ -56,7 +65,7 @@ export class SignIn extends Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: credentials => dispatch(signIn(credentials))
+    signInUser: credentials => dispatch(signIn(credentials))
   };
 };
 const mapStateToProps = state => {

@@ -21,8 +21,7 @@ class UserProfile extends Component {
           />
           {!findUserError ? (
             <h4 className="center-align">
-              {user.firstName}
-              {user.lastName}
+              {user.firstName} {user.lastName}
             </h4>
           ) : (
             <h3 className="center-align red-text text-lighten-2">

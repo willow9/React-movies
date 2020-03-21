@@ -3,13 +3,18 @@ import UserProfile from '../components/UserProfile';
 import UserMovies from '../components/UserMovies';
 
 const User = props => {
-  let id = props.match.params.id;
+  // Without destructuring looks cleaner : const id = this.match.params.id
+  const {
+    match: {
+      params: { id }
+    }
+  } = props;
 
   return (
     <div>
-      <div className='row'>
-        <UserProfile userId={id}></UserProfile>
-        <UserMovies isUserMovies={true} userId={id} />
+      <div className="row">
+        <UserProfile userId={id} />
+        <UserMovies isUserMovies userId={id} />
       </div>
     </div>
   );

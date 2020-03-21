@@ -37,8 +37,7 @@ class Users extends Component {
 
                     <Link to={`/users/${el.id}`}>
                       <span className=" valign-wrapper user-name-in-list">
-                        {el.firstName}
-                        {el.lastName}
+                        {el.firstName} {el.lastName}
                       </span>
                     </Link>
                   </li>

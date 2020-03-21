@@ -9,14 +9,17 @@ class Portal extends Component {
     this.el = document.createElement('div');
     //  this.el.className = "modal"
   }
+
   // 2: Append the element to the DOM when it mounts
   componentDidMount = () => {
     portalRoot.appendChild(this.el);
   };
+
   // 3: Remove the element when it unmounts
   componentWillUnmount = () => {
     portalRoot.removeChild(this.el);
   };
+
   render() {
     // 4: Render the element's children in a Portal
     const { children } = this.props;
