@@ -1,5 +1,5 @@
 import axios from 'axios';
-import 'dotenv/config.js';
+import 'dotenv/config';
 
 export const fetchMovies = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -69,25 +69,24 @@ export const fetchUserMovies = userId => {
       .doc(userId)
       .get()
       .then(doc => {
-        // console.log('Document data:', doc.data().movies);
-        doc.data().movies
-          ? firestore
-              .collection('movies')
-              .where('imdbID', 'in', [...doc.data().movies])
-              .get()
-              .then(querySnapshot => {
-                const movies = [];
-                querySnapshot.forEach(doc => {
-                  // console.log(doc.id, ' => ', doc.data());
-
-                  movies.push(doc.data());
-                });
-                dispatch({ type: 'FETCH_USER_MOVIES', payload: movies });
-              })
-              .catch(function(error) {
-                console.log('Error getting documents: ', error);
-              })
-          : dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
+        if (doc.data().movies) {
+          firestore
+            .collection('movies')
+            .where('imdbID', 'in', [...doc.data().movies])
+            .get()
+            .then(querySnapshot => {
+              const movies = [];
+              querySnapshot.forEach(movie => {
+                movies.push(movie.data());
+              });
+              dispatch({ type: 'FETCH_USER_MOVIES', payload: movies });
+            })
+            .catch(error => {
+              console.log('Error getting documents: ', error);
+            });
+        } else {
+          dispatch({ type: 'FETCH_USER_MOVIES_ERROR' });
+        }
       });
   };
 };

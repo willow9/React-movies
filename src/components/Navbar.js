@@ -7,12 +7,11 @@ import SignedOutLinks from './SignedOutLinks';
 const Navbar = ({ auth }) => {
   useEffect(() => {
     const elems = document.querySelectorAll('.sidenav');
-    const instance = window.M.Sidenav.init(elems, {
+    window.M.Sidenav.init(elems, {
       edge: 'left',
       inDuration: 250
     });
   }, []);
-  const someWord = 'hello';
 
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   return (

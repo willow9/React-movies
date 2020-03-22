@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { searchMovies, clearMovies } from '../redux';
 
 class SearchBar extends Component {
-  state = {
-    title: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ''
+    };
+  }
 
   handleChange = e => {
     this.setState({
@@ -38,6 +41,7 @@ class SearchBar extends Component {
               type="text"
               className="validate"
             />
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label htmlFor="title">Title</label>
           </div>
           <div className="input-field col s1">
