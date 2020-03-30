@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserList from '../components/UserList';
 import UserMovies from '../components/UserMovies';
 import SearchBar from '../components/SearchBar';

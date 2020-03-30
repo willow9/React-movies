@@ -6,12 +6,16 @@ import Modal1 from './Modal';
 import Portal from './Portal';
 
 class UserMovies extends Component {
-  state = {
-    isOpen: false,
-    imdbId: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+      imdbId: ''
+    };
+    this.toggleModal = this.toggle.bind(this);
+  }
 
-  componentWillMount() {
+  componentDidMount() {
     const {
       fetchAllMovies,
       fetchOnlyUserMovies,
@@ -26,12 +30,16 @@ class UserMovies extends Component {
   }
 
   toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(prevState => {
+      return { isOpen: !prevState.isOpen };
+    });
   };
 
   selectMovie = e => {
     this.setState({ imdbId: e.target.id });
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(prevState => {
+      return { isOpen: !prevState.isOpen };
+    });
   };
 
   setContainerSize = divSize => {
@@ -51,16 +59,19 @@ class UserMovies extends Component {
       <div>
         {isOpen ? (
           <Portal>
-            <Modal1 imdbId={imdbId} toggle={this.toggle.bind(this)} />
+            <Modal1 imdbId={imdbId} toggle={this.toggleModal} />
           </Portal>
         ) : null}
         <div className={this.setContainerSize('outerDiv')}>
           {isUserMovies && <h3 className="center">Favorite Movies</h3>}
           <div className="row">
             {movies ? (
-              movies.map((el, index) => {
+              movies.map(el => {
                 return (
-                  <div className={this.setContainerSize('cardDiv')} key={index}>
+                  <div
+                    className={this.setContainerSize('cardDiv')}
+                    key={el.imdbID}
+                  >
                     <div className="card ">
                       <div className="card-image">
                         <img
@@ -75,11 +86,7 @@ class UserMovies extends Component {
                           IMDB ID:
                           {el.imdbID}
                         </p>
-                        <p>{el.Year}</p>
-                        <p>
-                          {el.Year}
-                          year
-                        </p>
+                        <p>{el.Year} year</p>
                       </div>
                       <button
                         onClick={this.selectMovie}

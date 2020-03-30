@@ -4,7 +4,7 @@ import logo from '../images/logo512.png';
 import { fetchMovie, addMovieToDB, addMovieToUserCollection } from '../redux';
 
 class Modal1 extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { getMovie, imdbId } = this.props;
     getMovie(imdbId);
   }

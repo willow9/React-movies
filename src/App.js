@@ -5,7 +5,6 @@ import UserList from './components/UserList';
 import Dashboard from './pages/Dashboard';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import TestingModal from './pages/TestingModal';
 import UserProfile from './pages/User';
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
         <Route exact path="/users/:id" component={UserProfile} />
         <Route exaxt path="/signup" component={SignUp} />
         <Route exaxt path="/signin" component={SignIn} />
-        <Route exaxt path="/testing" component={TestingModal} />
       </Switch>
     </BrowserRouter>
   );

@@ -4,7 +4,7 @@ import noPicture from '../images/noPicture.jpg';
 import { findUser } from '../redux';
 
 class UserProfile extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchUser, userId } = this.props;
     fetchUser(userId);
   }

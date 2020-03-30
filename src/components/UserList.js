@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchUsers } from '../redux';
 
 class Users extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { fetch } = this.props;
     fetch();
   }
