@@ -10,3 +10,7 @@ App created using:
 * OMDb API (the open movie database) for movie search,
 * Materialize.
 
+### Deployed
+
+https://movies-76b58.web.app/
+
